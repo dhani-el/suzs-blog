@@ -1,0 +1,205 @@
+.preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color:#131515;
+    z-index: 99;
+}
+
+.preloader-container p {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    font-size: 2.2vw;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    animation: type 10s steps(150) infinite;
+    animation-delay: 2500ms;
+    white-space: nowrap;
+}
+.preloader-container p::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: .2vw;
+    opacity: 0;
+    background-color: white;
+    height: 100%;
+    animation: blink 0.8s steps(3) infinite;
+}
+
+@keyframes blink {
+    0%, 75% {
+        opacity: 1;
+    }
+    76%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes type {
+    0%, 90%, 100% {
+        width: 0.125%;
+        opacity: 1;
+    }
+    30%, 60% {
+        width: 80%;
+        opacity: 1;
+    }
+}
+.preloader-container .name {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    color: white;
+}
+.name2 {
+    position: relative;
+}
+.preloader-container .preload-name-container {
+    position: absolute;
+    background-color: #131515;
+    z-index: 99;
+    bottom: 5%;
+    left: -2%;
+    width: 200%;
+    height: 4rem;
+}
+
+.preloader-container .name .preload-nam {
+    font-size: 4vw;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.preloader-container .name span {
+    text-transform: uppercase;
+    opacity: 0;
+    animation: by 0.8s ease-in-out 6000ms;
+    animation-fill-mode: forwards;
+    position: absolute;
+    bottom: 22vh;
+    font-size: 1.5vw;
+}
+@keyframes by {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* media queries for tabs and mobile phones -780px*/
+@keyframes type2 {
+    0% {
+        width: 0.125%;
+        opacity: 1;
+        max-width: fit-content;
+    }
+    100% {
+        /* width: 82%; */
+        width: 100%;
+        opacity: 1;
+        max-width: fit-content;
+    }
+}
+@keyframes cursor-overlay {
+    0% {
+        z-index: -1;
+    }
+    100% {
+        z-index: 9;
+    }
+}
+@media screen and (max-width: 780px) {
+    .preloader-container p {
+        animation: none;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        font-size: 3vw;
+        left: 30%;
+        top: 50%;
+        transform: translate(-30%, -100%);
+    }
+    .preloader-container p::before {
+        animation: none;
+        opacity: 0;
+    }
+    .preloader-container p span {
+        position: relative;
+        margin-bottom: 2vh;
+        width: fit-content;
+        opacity: 0;
+        overflow: hidden;
+    }
+    .preloader-container p span::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: .2vw;
+        opacity: 1;
+        background-color: #131515;
+        height: 100%;
+        z-index: -1;
+    }
+    .preloader-container p span:nth-child(1)::after {
+        animation: cursor-overlay 100ms 2900ms forwards;
+    }
+    .preloader-container p span:nth-child(2)::after {
+        animation: cursor-overlay 100ms 3900ms forwards; 
+    }
+    .preloader-container p span:nth-child(1) {
+        animation: type2 2000ms steps(250) forwards;
+        animation-delay: 2000ms;
+    }
+    .preloader-container p span:nth-child(2) {
+        animation: type2 1500ms steps(200) 3000ms forwards;
+    }
+    .preloader-container p span:nth-child(3) {
+        animation: type2 2000ms steps(200) 4000ms forwards;
+    }
+    .preloader-container p span::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: .2vw;
+        opacity: 0;
+        background-color: white;
+        height: 100%;
+        animation: blink 0.8s steps(3) infinite;
+    }
+    .preloader-container .name .preload-nam {
+        font-size: 6vw;
+    }
+    .preloader-container .name span {
+        font-size: 2vw;
+    }
+}
+
+/* media queries for  small devices */
+
+@media screen and (max-width: 400px) {
+    .preloader-container p {
+        font-size: 4vw;
+    }
+    .preloader-container .name .preload-nam {
+        font-size: 7.5vw;
+    }
+    .preloader-container .name span {
+        font-size: 3.5vw;
+    }
+}
