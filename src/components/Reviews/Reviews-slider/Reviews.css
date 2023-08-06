@@ -1,0 +1,39 @@
+.Review-slider {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.rev {
+    background-color: white;
+    padding: 10vw;
+    color: rgba(58, 58, 58, 0.9);
+    font-weight: 800;
+    user-select: none;
+    /* neumorphism */
+}
+.slider-dots {
+    display: flex;
+    position: absolute;
+    bottom: -30%;
+    gap: 5vw;
+    font-size: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    color: #17473E;
+}
+.arrows {
+    position: absolute;
+    bottom: 1vw;
+    z-index: 9;
+    display: flex;
+    gap: 25vw;
+    font-size: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(58, 58, 58);
+}
+.reviewer{
+    margin-top: .5em;
+    font-weight: 500;
+}

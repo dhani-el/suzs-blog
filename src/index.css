@@ -20,4 +20,11 @@ code {
 
 html, body, * {
   font-family: 'Lato', sans-serif;
+  position: relative;
 }
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
