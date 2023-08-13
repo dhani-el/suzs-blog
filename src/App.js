@@ -7,6 +7,7 @@ import ScrollToTop from "./utilities/scrollToTop";
 import Home from "./screens/Home";
 import ScreenLayout from "./layouts/ScreenLayout";
 import Blog from "./screens/Blogs-page/Blog";
+import BlogDetails from "./screens/BlogDetails-page/blog";
 
 function App() {
   return (
@@ -28,6 +29,13 @@ function App() {
             path="/blogs/:id"
             element={
               <Blog />
+            }
+          />
+          <Route
+            exact
+            path="/blog/:id"
+            element={
+              <BlogDetails/>
             }
           />
           {/* <Route path="*" element={<NotFound />} /> 404 PAGE */}

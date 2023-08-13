@@ -27,3 +27,4 @@ reportWebVitals();
 // issues
 // search btn axios 
 // footer on blog page not clicking
+// env file

@@ -5,7 +5,7 @@ import {
     combineReducers,
 } from "redux";
 import thunk from "redux-thunk";
-import { fetchBlogReducer, searchBlogReducer } from "./reducers/BlogReducers";
+import { fetchBlogReducer, likeBlogReducer, likesCountReducer, searchBlogReducer, unlikeBlogReducer } from "./reducers/BlogReducers";
 import { newsletterSubReducer } from "./reducers/userReducers";
 
 const initialState = {
@@ -16,6 +16,10 @@ const reducer = combineReducers({
     newsletterSub: newsletterSubReducer,
     blogStore: fetchBlogReducer,
     searchBlog: searchBlogReducer,
+    blogDetails: fetchBlogReducer,
+    likeBlog: likeBlogReducer,
+    unlikeBlog: unlikeBlogReducer,
+    likesCount: likesCountReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

@@ -1,0 +1,120 @@
+.comment-form-container .login-reminder-overlay {
+    position: fixed;
+    top: 0%;
+    /* left: -50vw; */
+    bottom: 50%;
+    right: 20vw;
+    z-index: 9;
+    width: 200%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    backdrop-filter: blur(25px) saturate(66%);
+    -webkit-backdrop-filter: blur(25px) saturate(66%);
+    background-color: rgba(17, 25, 40, 0.25);
+}
+
+/* fix the media query problem */
+
+.comment-form-container .login-reminder-overlay-child {
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 2%;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.login-reminder-overlay .login-link {
+    padding-bottom: 10px;
+}
+
+.login-reminder-overlay .login-link a {
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .comment-form-container .login-reminder-overlay {
+        position: fixed;
+        top: 0%;
+        bottom: 50%;
+        right: 10vw;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .comment-form-container .login-reminder-overlay-child {
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .comment-form-container .login-reminder-overlay {
+        position: fixed;
+        top: 0%;
+        bottom: 70%;
+        right: 10vw;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .comment-form-container .login-reminder-overlay-child {
+        font-size: .9rem;
+        font-weight: 800;
+    }
+}
+
+.button-wrapper {
+    float: right;
+    height: 2rem;
+    width: 2rem;
+    margin: 2%;
+}
+
+.button-wrapper img {
+    filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* for the likes stn */
+.like-container .login-reminder-overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    z-index: 9;
+    width: 200%;
+    border-radius: 20px;
+    backdrop-filter: blur(25px) saturate(66%);
+    -webkit-backdrop-filter: blur(25px) saturate(66%);
+    background-color: rgba(17, 25, 40, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fix the media query problem */
+
+.like-container .login-reminder-overlay-child {
+    padding: 10% 10% 2%;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+}
+
+.like-container .button-wrapper {
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}

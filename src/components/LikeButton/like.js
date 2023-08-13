@@ -1,0 +1,55 @@
+import { useState, useEffect } from "react";
+import "./like.css";
+import Cookies from 'js-cookie';
+import liked from "../../images/liked.png";
+import unliked from "../../images/unliked.png";
+import LogReminder from "../LogReminder/Reminder";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogLikes, likeBlog, unLikeBlog } from "../../actions/blogActions";
+
+const Like = ({ blogTitle }) => {
+    const [like, setLike] = useState(false);
+    const [no_Of_Likes, set_no_of_likes] = useState(0);
+    const [reminder, setReminder] = useState(false);
+    const loginStatus = Cookies.get('loginStatus');
+    const dispatch = useDispatch();
+
+    // like and unlike functions
+    const data = new FormData();
+    data.append("title", blogTitle);
+    const blog_title = new URLSearchParams(data);
+    const handleLike = () => {
+        if (loginStatus) {
+            dispatch(likeBlog(blog_title)).then(() => {
+                setLike((like) => !like);
+            })
+        } else {
+            setReminder(true);
+        }
+    }
+    const handleUnLike = () => {
+        if (loginStatus) {
+            dispatch(unLikeBlog(blog_title)).then(()=> {
+                setLike((like) => !like);
+            })
+        } else {
+            setReminder(true);
+        }
+    }
+    useEffect(() => {
+        dispatch(fetchBlogLikes(blogTitle)).then((value)=> {
+            value.json();
+        }).then((data)=> {
+            set_no_of_likes(data);
+        })
+    }, [like, blogTitle, no_Of_Likes]);
+    return (
+        <div className="like-container">
+            <button onClick={like ? handleUnLike : handleLike}> <img className={like ? 'liked' : 'unliked'} src={like ? liked : unliked} alt="heart shape" /></button>
+            <p>{no_Of_Likes}</p>
+            {reminder && <LogReminder reminder={reminder} setReminder={setReminder} />}
+        </div>
+    );
+}
+
+export default Like;
