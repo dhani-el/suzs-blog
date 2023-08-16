@@ -5,22 +5,29 @@ import Footer from "../../components/Footer";
 import { useParams, useNavigate } from "react-router-dom";
 import Skeleton from "../../components/Skeleton-Screens/Skeleton";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBlog } from "../../actions/blogActions";
+import { fetchBlog, searchBlog } from "../../actions/blogActions";
 import Pagination from "../../components/pagination";
+import NavBar from "../../components/Navbar/Navbar";
+import Circle from "../../components/Circle";
+import "./blog.css";
 
 const Blog = () => {
     let { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // console.log(id);
+
     useEffect(() => {
         dispatch(fetchBlog({ id }));
-    }, [dispatch]);
+    }, [dispatch, id]);
+
     const blogs = useSelector((state) => state?.blogStore?.blogs);
     const blogsData = useSelector((state) => state?.blogStore);
 
-    const { loading, error } = blogsData
-    // let { data: blogs, IsPending, error, setdata } = Usefetch(`https://zeesblog.onrender.com/blogs/${id}`, id);
+    const { loading, error } = blogsData;
+
+    const searchedData = useSelector((state) => state?.searchBlog?.searched);
+    const searchedState = useSelector((state) => state?.searchBlog);
+
     const [btnState, setBtnstate] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -39,6 +46,10 @@ const Blog = () => {
     //         console.log("error",error.name);
     //     })
     // }
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+        dispatch(searchBlog({searchTerm}));
+    }
 
     // async function searchQuery(searchterm){
     //    let result = await fetch(`https://zeesblog.onrender.com/blogs/search/${searchterm}`,{
@@ -61,11 +72,13 @@ const Blog = () => {
 
     return (
         <div className="blogs-container">
+            <NavBar />
+            <Circle />
             <div className="sticky">
                 <Footer />
             </div>
             <div className="search-bar">
-                {/* <input onChange={handleSearch} placeholder="Search" type="search" /> */}
+                <input onChange={handleSearch} placeholder="Search" type="search" />
                 <button>
                     <img src={searchBtn} alt="search button" />
                 </button>
@@ -73,10 +86,10 @@ const Blog = () => {
             {loading ? (
                 <Skeleton />
             ) : error ? (
-                {/* <div className="err-msg">{error}</div> */}
+                {/* <div className="err-msg">{error}</div> */ }
             ) : (
                 <div>{blogs?.map((blog) => {
-                    return <Bloglist blog ={blog} key={blog._id} />
+                    return <Bloglist blog={blog} key={blog._id} />
                 })}</div>
             )}
             <Pagination currentPage={id} next={next} previouse={previouse} />

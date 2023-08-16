@@ -1,0 +1,38 @@
+.like-container {
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: 1.6rem;
+    padding: 0;
+}
+.like-container button {
+    background: none;
+    border: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+}
+.like-container p {
+    font-size: 1em;
+    padding: 0;
+}
+.like-container button img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.like-container button .liked {
+    transform: scale(1.1);
+    animation-fill-mode: forwards;
+    animation: like-animation 300ms ease-in-out;
+}
+@keyframes like-animation {
+    0%{
+        transform: scale(1.1);
+    }
+    90% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
