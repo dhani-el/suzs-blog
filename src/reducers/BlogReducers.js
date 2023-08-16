@@ -17,6 +17,9 @@ import {
     LIKES_COUNT_REQUEST,
     LIKES_COUNT_SUCCESS,
     LIKES_COUNT_FAILED,
+    DELETE_BLOG_REQUEST,
+    DELETE_BLOG_SUCCESS,
+    DELETE_BLOG_FAILED,
 } from "../constants/blogConstants";
 
 export const fetchBlogReducer = (state = { loading: true, blogs: [] }, action) => {
@@ -91,6 +94,18 @@ export const likesCountReducer = (state = { loading: true, likes: {} }, action) 
         case LIKES_COUNT_SUCCESS:
             return { loading: false, likes: action?.payload };
         case LIKES_COUNT_FAILED:
+            return { loading: false, error: action?.payload };
+        default:
+            return state;
+    }
+}
+export const deleteBlogReducer = (state = { loading: true, delete: {} }, action) => {
+    switch (action?.type) {
+        case DELETE_BLOG_REQUEST:
+            return { ...state, loading: true };
+        case DELETE_BLOG_SUCCESS:
+            return { loading: false, delete: action?.payload };
+        case DELETE_BLOG_FAILED:
             return { loading: false, error: action?.payload };
         default:
             return state;

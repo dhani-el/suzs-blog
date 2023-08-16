@@ -19,6 +19,9 @@ import {
     LIKES_COUNT_REQUEST,
     LIKES_COUNT_SUCCESS,
     LIKES_COUNT_FAILED,
+    DELETE_BLOG_REQUEST,
+    DELETE_BLOG_SUCCESS,
+    DELETE_BLOG_FAILED,
 } from "../constants/blogConstants";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -211,6 +214,40 @@ export const fetchBlogLikes = (blog_title) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: LIKES_COUNT_FAILED,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+        toast.error(
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message,
+            {
+                toastId: customId,
+            }
+        );
+    }
+}
+
+export const deleteBlog = ({id}) => async (dispatch) => {
+    dispatch({
+        type: DELETE_BLOG_REQUEST,
+    });
+    try {
+        const {data} = await Axios.delete(`https://zeesblog.onrender.com/admin/delete/${id}`, {
+            credentials:'include',
+        });
+        dispatch({
+            type: DELETE_BLOG_SUCCESS,
+            payload: data
+        });
+        toast.success("Blog Deleted", {
+            toastId: customId,
+        });
+    } catch (error) {
+        dispatch({
+            type: DELETE_BLOG_FAILED,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

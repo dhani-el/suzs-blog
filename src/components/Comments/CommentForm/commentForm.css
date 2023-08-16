@@ -1,0 +1,41 @@
+.comment-form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.comment-form-container form {
+    position: relative;
+    width: 90%;
+    height: 20vh;
+    margin-top: 5vh;
+    border-radius: 15px;
+    box-shadow: 3px 2px 14px -1px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 3px 2px 14px -1px rgba(0,0,0,0.3);
+    -moz-box-shadow: 3px 2px 14px -1px rgba(0,0,0,0.3);
+}
+.comment-form-container button {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    border: none;
+    color: white;
+    background-color: rgb(68, 145, 131);
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: capitalize;
+    padding: 1% 3%;
+    border-radius: 20px;
+}
+.comment-form-container #disabled {
+    background-color: rgb(68, 145, 131, 0.3);
+}
+.comment-form-container textarea{
+    width: 100%;
+    outline: none;
+    height: 13vh;
+    max-height: fit-content;
+    white-space: no-wrap;
+    border: none;
+    padding: 2vh 2vh;
+    resize: none;
+}

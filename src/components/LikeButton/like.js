@@ -38,7 +38,7 @@ const Like = ({ blogTitle }) => {
     }
     useEffect(() => {
         dispatch(fetchBlogLikes(blogTitle)).then((value)=> {
-            value.json();
+            value?.json();
         }).then((data)=> {
             set_no_of_likes(data);
         })

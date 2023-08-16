@@ -28,8 +28,6 @@ const Blog = () => {
     const searchedData = useSelector((state) => state?.searchBlog?.searched);
     const searchedState = useSelector((state) => state?.searchBlog);
 
-    console.log(searchedData);
-
     const [btnState, setBtnstate] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 

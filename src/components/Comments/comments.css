@@ -1,0 +1,17 @@
+.comments-wrapper{
+    padding: 0;
+    height: 100vh;
+    overflow: auto;
+}
+.comments-wrapper .header {
+    font-size: 1.6vw;
+    font-weight: 800;
+    padding-left: 1.5vw;
+}
+
+/* media queries */ 
+@media screen and (max-width: 900px) {
+    .comments-wrapper .header {
+        font-size: 1em;
+    }
+}
