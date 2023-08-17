@@ -8,6 +8,7 @@ import Home from "./screens/Home";
 import ScreenLayout from "./layouts/ScreenLayout";
 import Blog from "./screens/Blogs-page/Blog";
 import BlogDetails from "./screens/BlogDetails-page/blog";
+import Genre from "./screens/Genre-page/genre";
 
 function App() {
   return (
@@ -35,7 +36,14 @@ function App() {
             exact
             path="/blog/:id"
             element={
-              <BlogDetails/>
+              <BlogDetails />
+            }
+          />
+          <Route
+            exact
+            path="/genre"
+            element={
+              <Genre />
             }
           />
           {/* <Route path="*" element={<NotFound />} /> 404 PAGE */}

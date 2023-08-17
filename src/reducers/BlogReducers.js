@@ -20,6 +20,9 @@ import {
     DELETE_BLOG_REQUEST,
     DELETE_BLOG_SUCCESS,
     DELETE_BLOG_FAILED,
+    FETCH_GENRE_REQUEST,
+    FETCH_GENRE_SUCCESS,
+    FETCH_GENRE_FAILED,
 } from "../constants/blogConstants";
 
 export const fetchBlogReducer = (state = { loading: true, blogs: [] }, action) => {
@@ -106,6 +109,19 @@ export const deleteBlogReducer = (state = { loading: true, delete: {} }, action)
         case DELETE_BLOG_SUCCESS:
             return { loading: false, delete: action?.payload };
         case DELETE_BLOG_FAILED:
+            return { loading: false, error: action?.payload };
+        default:
+            return state;
+    }
+}
+
+export const fetchGenreReducer = (state = { loading: true, blogs: [] }, action) => {
+    switch (action?.type) {
+        case FETCH_GENRE_REQUEST:
+            return { ...state, loading: true };
+        case FETCH_GENRE_SUCCESS:
+            return { loading: false, blogs: action?.payload };
+        case FETCH_GENRE_FAILED:
             return { loading: false, error: action?.payload };
         default:
             return state;
