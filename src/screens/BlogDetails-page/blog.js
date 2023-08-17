@@ -17,6 +17,7 @@ import "./blog.css";
 import "../Blogs-page/blog.css";
 import Comments from "../../components/Comments/comments";
 import { fetchComments } from "../../actions/commentActions";
+import Circle from "../../components/Circle";
 
 // one imports left
 
@@ -25,12 +26,12 @@ const BlogDetails = () => {
     const tl = useRef();
     const { id } = useParams();
     const navigate = useNavigate();
-    const dispatch =useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchBlogDetails(id));
+        dispatch(fetchBlogDetails(id));
     }, [dispatch, id]);
-    const {blogDetails, loading, error} = useSelector((state) => state?.blogDetails);    
+    const { blogDetails, loading, error } = useSelector((state) => state?.blogDetails);
     const handleDelete = () => {
         dispatch(deleteBlog(id)).then(() => {
             navigate('/blogs/0');
@@ -48,69 +49,71 @@ const BlogDetails = () => {
         setClosed(!closed);
         dispatch(fetchComments(blogDetails[0]?.title, commentPage));
     }
-        // animating comments section
-        useEffect(() => {
-            window.scrollTo(0, 0);
-            tl.current = gsap.timeline({
-                paused: true
-            })
-            tl.current.fromTo(cBlock.current, {
-                x: "100%",
-                duration: 0
-            }, {
-                x: "0%",
-                duration: 0.5,
-                ease: 'power3.inOut'
-            });
-            if (username === 'rashadx' || username === 'daniel') {
-                setShowDel(true)
-                // correct this!!!
-            }
-    
-        }, [blogDetails, username]);
-        // animations control
-        useEffect(() => {
-            closed ? tl.current.play() : tl.current.reverse();
-        }, [closed]);
+    // animating comments section
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        tl.current = gsap.timeline({
+            paused: true
+        })
+        tl.current.fromTo(cBlock.current, {
+            x: "100%",
+            duration: 0
+        }, {
+            x: "0%",
+            duration: 0.5,
+            ease: 'power3.inOut'
+        });
+        if (username === 'rashadx' || username === 'daniel') {
+            setShowDel(true)
+            // correct this!!!
+        }
+
+    }, [blogDetails, username]);
+    // animations control
+    useEffect(() => {
+        closed ? tl.current.play() : tl.current.reverse();
+    }, [closed]);
     return (
         <div className="blog-details-container">
             <NavBar />
+            <Circle/>
             <div className="blog-details-container-2">
                 <div className="blog-details">
-                    {loading && <div className="load-msg">ZEE.</div>}
-                    {error && <div className="err-msg">{error}</div>}
-                    {blogDetails && <article>
-                        <div className="blog-nav">
-                            <div className="blog-stuff">
-                                <div className="zee-img-wrapper">
-                                    <div className="zee-head-wrapper">
-                                        <img src={zeehead} alt="" />
+                    {loading ? (<div className="load-msg">ZEE.</div>) : (
+                        <article>
+                            <div className="blog-nav">
+                                <div className="blog-stuff">
+                                    <div className="zee-img-wrapper">
+                                        <div className="zee-head-wrapper">
+                                            <img src={zeehead} alt="" />
+                                        </div>
+                                        <div className="name">susan omono</div>
                                     </div>
-                                    <div className="name">susan omono</div>
+                                    <div className="blog-stats">
+                                        <div className="date">{new Date(blogDetails[0]?.date).toString() === "Invalid Date" ? blogDetails[0]?.date : formatDistanceToNowStrict(new Date(blogDetails[0]?.date))} ago</div>
+                                        <span className="dot">.</span>
+                                        <div className="read-time">{blogDetails[0]?.readTime} read</div>
+                                    </div>
                                 </div>
-                                <div className="blog-stats">
-                                    <div className="date">{new Date(blogDetails[0]?.date).toString() === "Invalid Date" ? blogDetails[0]?.date : formatDistanceToNowStrict(new Date(blogDetails[0]?.date))} ago</div>
-                                    <span className="dot">.</span>
-                                    <div className="read-time">{blogDetails[0]?.readTime} read</div>
-                                </div>
+                                <Share handleCopy={handleCopy} />
                             </div>
-                            <Share handleCopy={handleCopy} />
-                        </div>
-                        <h2>{blogDetails[0]?.title}</h2>
-                        <div className="header-image-wrapper">
-                            <img src={blogDetails[0]?.image} alt="blog" className="header-image" />
-                        </div>
-                        <p id="blog-body">{blogDetails[0]?.body}</p>
-                        {showDel && <button onClick={handleDelete}>delete blog</button>}
-                        <div className="like-comment-hover">
-                            <Like blogTitle={blogDetails[0]?.title} />
-                            <div className="comments-btn-wrapper" onClick={handleOpen}><img src={commentsBtn} alt="message button" /></div>
-                        </div>
-                        <div ref={cBlock} className={closed ? 'comments-wall played' : 'comments-wall reversed'}>
-                            <Comments title={blogDetails[0]?.title} pag={commentPage} />
-                            <div className="close-button-wrapper" onClick={handleOpen}><img src={closeBtn} alt="close button" /></div>
-                        </div>
-                    </article>}
+                            <h2>{blogDetails[0]?.title}</h2>
+                            <div className="header-image-wrapper">
+                                <img src={blogDetails[0]?.image} alt="blog" className="header-image" />
+                            </div>
+                            <p id="blog-body">{blogDetails[0]?.body}</p>
+                            {showDel && <button onClick={handleDelete}>delete blog</button>}
+                            <div className="like-comment-hover">
+                                <Like blogTitle={blogDetails[0]?.title} />
+                                <div className="comments-btn-wrapper" onClick={handleOpen}><img src={commentsBtn} alt="message button" /></div>
+                            </div>
+                            <div ref={cBlock} className={closed ? 'comments-wall played' : 'comments-wall reversed'}>
+                                <Comments title={blogDetails[0]?.title} pag={commentPage} />
+                                <div className="close-button-wrapper" onClick={handleOpen}><img src={closeBtn} alt="close button" /></div>
+                            </div>
+                        </article>
+                    )}
+                    {error && <div className="err-msg">{error}</div>}
                     {copied && <div className="copy-alert">Copied to Clipboard!</div>}
                 </div>
                 <div className="sticky-footer-container">

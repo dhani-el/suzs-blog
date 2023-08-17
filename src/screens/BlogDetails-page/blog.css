@@ -6,8 +6,8 @@
 
 .load-msg {
     position: absolute;
-    left: 35%;
-    top: 50vh;
+    left: 50%;
+    top: 40vh;
     transform: translate(-50%, -50%);
     font-weight: 700;
     font-size: 4vw;
@@ -363,7 +363,7 @@ h2 {
     .load-msg {
         position: absolute;
         left: 50%;
-        top: 50vh;
+        top: 30vh;
         transform: translate(-50%, -50%);
         font-weight: 700;
         font-size: 10vw;

@@ -30,3 +30,5 @@ reportWebVitals();
 // env file
 // reminder css
 // test comments
+// replace error with image
+// put cursor pointer on reviews btn
