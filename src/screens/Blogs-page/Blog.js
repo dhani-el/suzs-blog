@@ -86,7 +86,7 @@ const Blog = () => {
             {loading ? (
                 <Skeleton />
             ) : error ? (
-                {/* <div className="err-msg">{error}</div> */ }
+                 <div className="err-msg"></div>
             ) : (
                 <div>{blogs?.map((blog) => {
                     return <Bloglist blog={blog} key={blog._id} />
