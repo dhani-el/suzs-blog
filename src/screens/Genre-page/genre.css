@@ -1,0 +1,95 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+.genre-header {
+    margin-left: 20%;
+    text-transform: capitalize;
+    border-bottom: .05px solid hsl(0, 1%, 75%);
+    width: 60%;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+}
+.genre-container-2 {
+    display: flex;
+    justify-content: space-between;
+}
+.genre-container-2 .bloglist {
+    width: 50%;
+}
+.genre-container-2 .bloglist .blog-preview {
+    width: 100%;
+}
+.genre-container-2 .footer {
+    width: 30%;
+    border-left: .05px solid rgb(68, 145, 131, 0.3);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 5vw 5vw;
+}
+.genre-container-2 .footer article {
+    width: 100%;
+}
+.genre-container-2 .blog-stats {
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
+}
+.genre-container-2 .blog-stats .read-time {
+    color: rgba(58, 58, 58, 0.9);
+}
+
+/* media queries for tabs and smaller devices */
+
+@media screen and (max-width: 900px) {
+    .genre-container-2 .blog-stats {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .genre-container-2 .blog-preview-img-wraper {
+        width: 15vw;
+        height: 15vw;
+    }
+}
+@media screen and (max-width: 700px) {
+    .genre-container-2 .footer {
+        display: none;
+    }
+    .genre-container-2 .bloglist .blog-preview {
+        width: 80vw;
+    }
+}
+@media screen and (max-width: 550px) {
+    .genre-container-2 .blog-preview-img-wraper {
+        width: 20vw;
+        height: 20vw;
+    }
+    .genre-container-2 .bloglist {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .genre-container-2 .bloglist .blog-preview  {
+        font-size: 3.5vw;
+    }
+    .genre-container-2 .bloglist {
+        margin-top: 10%;
+    }
+    .genre-header {
+        font-size: 7vw;
+        padding-bottom: 10vw;
+    }
+    
+}
+@media screen and (max-width: 350px) {
+    .genre-container-2 .bloglist .blog-preview  {
+        font-size: 4vw;
+    }
+    .genre-container-2 .bloglist {
+        margin-top: 15%;
+    }
+}

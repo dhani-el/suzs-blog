@@ -22,6 +22,9 @@ import {
     DELETE_BLOG_REQUEST,
     DELETE_BLOG_SUCCESS,
     DELETE_BLOG_FAILED,
+    FETCH_GENRE_REQUEST,
+    FETCH_GENRE_SUCCESS,
+    FETCH_GENRE_FAILED,
 } from "../constants/blogConstants";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -248,6 +251,37 @@ export const deleteBlog = ({id}) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: DELETE_BLOG_FAILED,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+        toast.error(
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message,
+            {
+                toastId: customId,
+            }
+        );
+    }
+}
+
+export const fetchGenre = ({name}) => async (dispatch) => {
+    dispatch({
+        type: FETCH_GENRE_REQUEST,
+    });
+    try {
+        const {data} = await Axios.get(`https://zeesblog.onrender.com/blogs/genres/${name}/0`, {
+            credentials:"include",
+        });
+        dispatch({
+            type: FETCH_GENRE_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: FETCH_GENRE_FAILED,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

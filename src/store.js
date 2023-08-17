@@ -9,6 +9,7 @@ import {
   deleteBlogReducer,
   fetchBlogDetailsReducer,
   fetchBlogReducer,
+  fetchGenreReducer,
   likeBlogReducer,
   likesCountReducer,
   searchBlogReducer,
@@ -32,6 +33,7 @@ const reducer = combineReducers({
   deleteBlog: deleteBlogReducer,
   fetchComments: fetchCommentsReducer,
   postComment: postCommentsReducer,
+  fetchGenre: fetchGenreReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
