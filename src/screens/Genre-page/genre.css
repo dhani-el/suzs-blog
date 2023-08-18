@@ -13,8 +13,11 @@
     display: flex;
     justify-content: space-between;
 }
+.genre-container-2 .genre-bloglist {
+    display: block;
+}
 .genre-container-2 .bloglist {
-    width: 50%;
+    width: 150%;
 }
 .genre-container-2 .bloglist .blog-preview {
     width: 100%;

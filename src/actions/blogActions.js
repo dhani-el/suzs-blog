@@ -267,7 +267,7 @@ export const deleteBlog = ({id}) => async (dispatch) => {
     }
 }
 
-export const fetchGenre = ({name}) => async (dispatch) => {
+export const fetchGenre = (name) => async (dispatch) => {
     dispatch({
         type: FETCH_GENRE_REQUEST,
     });
@@ -279,6 +279,7 @@ export const fetchGenre = ({name}) => async (dispatch) => {
             type: FETCH_GENRE_SUCCESS,
             payload: data,
         });
+        console.log(data);
     } catch (error) {
         dispatch({
             type: FETCH_GENRE_FAILED,
