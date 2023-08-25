@@ -21,7 +21,7 @@ import Circle from "../../components/Circle";
 
 // one imports left
 
-const BlogDetails = () => {
+const BlogDetails = ({updateCurse, updateLeave}) => {
     const cBlock = useRef();
     const tl = useRef();
     const { id } = useParams();
@@ -75,7 +75,10 @@ const BlogDetails = () => {
     }, [closed]);
     return (
         <div className="blog-details-container">
-            <NavBar />
+            <NavBar 
+            updateCurse={updateCurse}
+            updateLeave={updateLeave}
+             />
             <Circle/>
             <div className="blog-details-container-2">
                 <div className="blog-details">
@@ -104,12 +107,12 @@ const BlogDetails = () => {
                             <p id="blog-body">{blogDetails[0]?.body}</p>
                             {showDel && <button onClick={handleDelete}>delete blog</button>}
                             <div className="like-comment-hover">
-                                <Like blogTitle={blogDetails[0]?.title} />
-                                <div className="comments-btn-wrapper" onClick={handleOpen}><img src={commentsBtn} alt="message button" /></div>
+                                <Like blogTitle={blogDetails[0]?.title} updateCurse={updateCurse} updateLeave={updateLeave}/>
+                                <div className="comments-btn-wrapper" onClick={handleOpen} onMouseOver={updateCurse} onMouseLeave={updateLeave}><img src={commentsBtn} alt="message button" /></div>
                             </div>
                             <div ref={cBlock} className={closed ? 'comments-wall played' : 'comments-wall reversed'}>
                                 <Comments title={blogDetails[0]?.title} pag={commentPage} />
-                                <div className="close-button-wrapper" onClick={handleOpen}><img src={closeBtn} alt="close button" /></div>
+                                <div className="close-button-wrapper" onClick={handleOpen} onMouseOver={updateCurse} onMouseLeave={updateLeave}><img src={closeBtn} alt="close button" /></div>
                             </div>
                         </article>
                     )}
@@ -121,10 +124,10 @@ const BlogDetails = () => {
                     <p>Join many other lifestyle enthusiasts who receive our content in their inbox.</p>
                     <div className="links-wrapper">
                         <div className="socials-wrapper">
-                            <a href="https://instagram.com/existentialcrisisgirl_?r=nametag" target="_blank" rel="noopener noreferrer" className="socials">
+                            <a href="https://instagram.com/existentialcrisisgirl_?r=nametag" target="_blank" rel="noopener noreferrer" className="socials" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>
                                 <img src={insta} alt="instagram logo" />
                             </a>
-                            <a href="https://mobile.twitter.com/jupiter_knows" target="_blank" rel="noopener noreferrer" className="socials">
+                            <a href="https://mobile.twitter.com/jupiter_knows" target="_blank" rel="noopener noreferrer" className="socials" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>
                                 <img src={tweet} alt="twitter logo" />
                             </a>
                         </div>
@@ -132,13 +135,13 @@ const BlogDetails = () => {
                     <div className="nav">
                         <ul>
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>Home</Link>
                             </li>
                             <li>
-                                <Link to="/blogs/0">Blog</Link>
+                                <Link to="/blogs/0" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>Blog</Link>
                             </li>
                             <li>
-                                <Link to="/about">About</Link>
+                                <Link to="/about" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>About</Link>
                             </li>
                         </ul>
                     </div>

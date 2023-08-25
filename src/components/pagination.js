@@ -1,9 +1,9 @@
-export default function Pagination(props) {
+export default function Pagination({currentPage, previouse, next, updateCurse,updateLeave}) {
 
     return (
         <div className="pagination">
-            { props.currentPage <= 0 ? <div></div> : <button onClick={props.previouse}>prev</button>}
-            <button onClick={props.next}>next</button>
+            { currentPage <= 0 ? <div></div> : <button onClick={previouse} onMouseOver={updateCurse} onMouseLeave={updateLeave}>prev</button>}
+            <button onClick={next} onMouseOver={updateCurse} onMouseLeave={updateLeave}>next</button>
         </div>
     );
 }

@@ -1,0 +1,34 @@
+.cursor {
+    position: absolute;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #17473E;
+    transition: 0.4s;
+    transition-delay: -50ms;
+    pointer-events: none;
+    z-index: 99;
+    transform: translateX(-50%);
+    opacity: 0%;
+    margin-top: -10px;
+}
+.lin {
+    width: 35px;
+    height: 35px;
+    /* opacity: 60% !important; */
+    z-index: 99;
+    /* transition: 0.2s;
+    transition-delay: -50ms; */
+    margin-top: -10px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    position: absolute;
+    border-radius: 50%;
+    background-color: hsl(169, 51%, 18%, 50%);
+}
+
+/* @media screen and (max-width: 700px) {
+    .cursor, .lin {
+        display: none;
+    }
+} */

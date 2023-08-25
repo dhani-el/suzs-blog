@@ -10,8 +10,9 @@ import Pagination from "../../components/pagination";
 import NavBar from "../../components/Navbar/Navbar";
 import Circle from "../../components/Circle";
 import "./blog.css";
+import Cursor from "../../components/Cursor/cursor";
 
-const Blog = () => {
+const Blog = ({ updateCurse, updateLeave }) => {
     let { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const Blog = () => {
     // }
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
-        dispatch(searchBlog({searchTerm}));
+        dispatch(searchBlog({ searchTerm }));
     }
 
     // async function searchQuery(searchterm){
@@ -72,10 +73,16 @@ const Blog = () => {
 
     return (
         <div className="blogs-container">
-            <NavBar />
+            <NavBar
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
             <Circle />
             <div className="sticky">
-                <Footer />
+                <Footer 
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+                />
             </div>
             <div className="search-bar">
                 <input onChange={handleSearch} placeholder="Search" type="search" />
@@ -86,13 +93,13 @@ const Blog = () => {
             {loading ? (
                 <Skeleton />
             ) : error ? (
-                 <div className="err-msg"></div>
+                <div className="err-msg"></div>
             ) : (
-                <div>{blogs?.map((blog) => {
-                    return <Bloglist blog={blog} key={blog._id} />
+                <div className="bloglist-wrapper">{blogs?.map((blog) => {
+                    return <Bloglist blog={blog} key={blog._id} updateCurse={updateCurse} updateLeave={updateLeave}/>
                 })}</div>
             )}
-            <Pagination currentPage={id} next={next} previouse={previouse} />
+            <Pagination currentPage={id} next={next} previouse={previouse} updateCurse={updateCurse} updateLeave={updateLeave}/>
         </div>
     );
 }

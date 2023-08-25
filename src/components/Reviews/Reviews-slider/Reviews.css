@@ -33,6 +33,10 @@
     transform: translateX(-50%);
     color: rgba(58, 58, 58);
 }
+.arrow-left,
+.arrow-right {
+    cursor: pointer;
+}
 .reviewer{
     margin-top: .5em;
     font-weight: 500;

@@ -7,7 +7,7 @@ import LogReminder from "../LogReminder/Reminder";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogLikes, likeBlog, unLikeBlog } from "../../actions/blogActions";
 
-const Like = ({ blogTitle }) => {
+const Like = ({ blogTitle, updateCurse, updateLeave }) => {
     const [like, setLike] = useState(false);
     const [no_Of_Likes, set_no_of_likes] = useState(0);
     const [reminder, setReminder] = useState(false);
@@ -45,9 +45,9 @@ const Like = ({ blogTitle }) => {
     }, [like, blogTitle, no_Of_Likes]);
     return (
         <div className="like-container">
-            <button onClick={like ? handleUnLike : handleLike}> <img className={like ? 'liked' : 'unliked'} src={like ? liked : unliked} alt="heart shape" /></button>
+            <button onClick={like ? handleUnLike : handleLike} onMouseOver={updateCurse} onMouseLeave={updateLeave}> <img className={like ? 'liked' : 'unliked'} src={like ? liked : unliked} alt="heart shape" /></button>
             <p>{no_Of_Likes}</p>
-            {reminder && <LogReminder reminder={reminder} setReminder={setReminder} />}
+            {reminder && <LogReminder reminder={reminder} setReminder={setReminder}  updateCurse={updateCurse} updateLeave={updateLeave}/>}
         </div>
     );
 }
