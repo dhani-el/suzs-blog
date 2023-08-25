@@ -26,9 +26,9 @@ reportWebVitals();
 
 // issues
 // search btn axios 
-// footer on blog page not clicking
-// env file
 // reminder css
-// test comments
+// code splitting
 // replace error with image
-// put cursor pointer on reviews btn
+// body stuff on axios!
+// genre no image, img is returning something weird
+// fix all undefined errors (check especially homepage,GSAP issue)

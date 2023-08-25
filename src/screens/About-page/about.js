@@ -23,7 +23,7 @@ import { useDispatch } from "react-redux";
 import NavBar from "../../components/Navbar/Navbar";
 import Circle from "../../components/Circle";
 
-const About = () => {
+const About = ({updateCurse, updateLeave}) => {
     // opening animation 
     const dispatch = useDispatch();
     let container = useRef(null);
@@ -55,7 +55,7 @@ const About = () => {
             delay: .5
         });
         window.scrollTo(0, 0);
-    }, [imageReveal, tl])
+    }, [])
     // Newsletter Implementation
 
     const [btnState, setBtnstate] = useState(false);
@@ -73,7 +73,10 @@ const About = () => {
     }
     return (
         <div className="about-wrapper">
-            <NavBar />
+            <NavBar 
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
             <Circle />
             <div className={btnState ? 'sub-active' : 'sub-null'}>
                 You're now an active subscriber!
@@ -154,11 +157,14 @@ const About = () => {
                     <p>Join many other lifestyle enthusiasts who receive our content in their inbox.</p>
                     <form action="" onSubmit={handleSubmit} ref={form}>
                         <input type="email" name="" id="" placeholder="Email" onChange={(e) => (setEmail(e.target.value))} />
-                        <button> <span>Subscribe</span> <img src={arrow} alt="arrow" /> </button>
+                        <button onMouseOver={updateCurse} onMouseLeave={updateLeave}> <span>Subscribe</span> <img src={arrow} alt="arrow" /> </button>
                     </form>
                 </div>
             </div>
-            <Footer />
+            <Footer 
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
         </div>
     );
 }

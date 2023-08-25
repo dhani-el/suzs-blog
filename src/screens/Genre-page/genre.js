@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 import NavBar from "../../components/Navbar/Navbar";
 import Circle from "../../components/Circle";
 
-const Genre = () => {
+const Genre = ({updateCurse, updateLeave}) => {
     const dispatch = useDispatch();
     function useQuery() {
         const { search } = useLocation();
@@ -25,17 +25,23 @@ const Genre = () => {
     const { blogs, loading, error } = useSelector((state) => state?.fetchGenre);
     return (
         <div className="genre-container">
-        <NavBar/>
+        <NavBar
+            updateCurse={updateCurse}
+            updateLeave={updateLeave}
+        />
         <Circle/>
             <h2 className="genre-header">{name}</h2>
             <div className="genre-container-2">
                 <div className="genre-bloglist">
                     {loading ? (<Skeleton />) : (blogs?.map((blog) => {
-                        return <Bloglist blog={blog} key={blog?._id} />
+                        return <Bloglist blog={blog} key={blog?._id} updateCurse={updateCurse} updateLeave={updateLeave}/>
                     }))}
                 </div>
                 {error && <div className="err-msg">{error}</div>}
-                <Footer />
+                <Footer 
+                    updateCurse={updateCurse}
+                    updateLeave={updateLeave}
+                />
             </div>
         </div>
     );

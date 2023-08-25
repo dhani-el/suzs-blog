@@ -40,11 +40,13 @@
 .search-bar button img {
     padding: 0em 1.2em;
 }
-
+.bloglist-wrapper {
+    max-width: fit-content;
+}
 .bloglist {
     margin-top: 5%;
-    position: relative;
-    z-index: 2;
+    /* position: relative;
+    z-index: 2; */
 }
 
 .blog-preview {
@@ -159,6 +161,9 @@
     border-radius: 50%;
     background-color: #17473E;
     padding: 10px;
+    /* border: 4px solid red;
+    position: relative;
+    z-index: 9999; */
 }
 
 .socials-wrapper img {

@@ -6,7 +6,7 @@ import menuBtn from "../../images/hamburger.svg";
 import closeButton from "../../images/close.svg";
 import Cookies from 'js-cookie';
 
-const NavBar = () => {
+const NavBar = ({ updateCurse, updateLeave }) => {
     const nav = useRef();
     const tl = useRef();
     const username = Cookies.get('username');
@@ -46,10 +46,10 @@ const NavBar = () => {
                 </div>
             </ul>
             <ul>
-                <li><Link to="/">home</Link></li>
-                <li><Link to="/blogs/0">blog</Link></li>
-                <li><Link to="/about">about</Link></li>
-                {loginStatus ? <li>Hi {username}</li> : <li><Link to="/login" id="signup"><button> Log In</button></Link></li>}
+                <li><Link to="/" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave} >home</Link></li>
+                <li><Link to="/blogs/0" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave} >blog</Link></li>
+                <li><Link to="/about" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave} >about</Link></li>
+                {loginStatus ? <li>Hi {username}</li> : <li><Link to="/login" id="signup" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}><button> Log In</button></Link></li>}
             </ul>
             <div className="menu-btn-wrapper" onClick={handleOpen}>
                 <img src={menuBtn} alt="hamburger" />

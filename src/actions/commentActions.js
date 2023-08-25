@@ -10,7 +10,7 @@ export const fetchComments = (title, pag) => async (dispatch) => {
         type: FETCH_COMMENTS_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`https://zeesblog.onrender.com/comments/${title}/${pag}`, {
+        const {data} = await Axios.get(`${BASE_URL}/comments/${title}/${pag}`, {
             credentials: "include",
         });
         dispatch({
@@ -36,15 +36,16 @@ export const fetchComments = (title, pag) => async (dispatch) => {
     }
 }
 
-export const postComment = ({comment}) => async (dispatch) => {
+export const postComment = ({title, comment}) => async (dispatch) => {
     dispatch({
         type: POST_COMMENT_REQUEST,
     });
     try {
-        const {data} = await Axios.post(`https://zeesblog.onrender.com/comments/post`, {
-            comment
+        const {data} = await Axios.post(`${BASE_URL}/comments/post`, {
+            title: `${title}`,
+            comment: `${comment}`,
         },{
-            credentials: "include",
+            withCredentials: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -53,6 +54,7 @@ export const postComment = ({comment}) => async (dispatch) => {
             type: POST_COMMENT_SUCCESS,
             payload: data,
         });
+        console.log('success!');
     } catch (error) {
         dispatch({
             type: POST_COMMENT_FAILED,

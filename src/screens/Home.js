@@ -23,8 +23,10 @@ import arrow from "../images/Arrow 1.png";
 import { newsletterSub } from "../actions/userActions.js";
 import Preloader from "../components/Preloader/Preloader.js";
 import Circle from "../components/Circle.js";
+import Cursor from "../components/Cursor/cursor.js";
+import NavBar from "../components/Navbar/Navbar.js";
 
-const Home = () => {
+const Home = ({ updateCurse, updateLeave }) => {
     // newsletter submission implementation
 
     const [btnState, setBtnstate] = useState(false);
@@ -78,7 +80,7 @@ const Home = () => {
             ease: "power2",
             delay: 8.1
         });
-    }, [imageReveal, tl]);
+    }, []);
 
     let ata = new FormData();
     ata.append('email', emailState);
@@ -93,16 +95,20 @@ const Home = () => {
 
     return (
         <div className="home-stn">
+            <NavBar
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
             <Preloader />
-            <Circle/>
-            <div className={btnState ? 'sub-active' : 'sub-null'}>
+            <Circle />
+            {/* <div className={btnState ? 'sub-active' : 'sub-null'}>
                 You're now an active subscriber!
-            </div>
+            </div> */}
             <div className="hero-stn">
                 <div className="hero-stn-texts">
                     <h1 id="split-text">Confused about living as a twenty <span id="raleway">-something?</span> You're not alone!</h1>
                     <p id="split-text2">Get in touch with Zee’s lifestyle rants for the imperfect twenty-somethings!</p>
-                    <Link to="/blogs/0">explore</Link>
+                    <Link to="/blogs/0" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>explore</Link>
                 </div>
                 <div className="hero-stn-img-wrapper2">
                     <div ref={el => container = el} className="hero-stn-img-wrapper">
@@ -384,14 +390,20 @@ const Home = () => {
                     <p>Join many other lifestyle enthusiasts who receive our content in their inbox.</p>
                     <form action="" onSubmit={handleSubmit} ref={form}>
                         <input required type="email" name="" id="" placeholder="Email" onChange={(e) => (setEmail(e.target.value))} />
-                        <button> <span>Subscribe</span> <img src={arrow} alt="arrow" /> </button>
+                        <button onMouseOver={updateCurse} onMouseLeave={updateLeave}> <span>Subscribe</span> <img src={arrow} alt="arrow" /> </button>
                     </form>
                 </div>
             </div>
             <div className="reviews-stn">
-                <Reviews />
+                <Reviews
+                    updateCurse={updateCurse}
+                    updateLeave={updateLeave}
+                />
             </div>
-            <Footer />
+            <Footer
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
         </div>
     );
 }
