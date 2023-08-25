@@ -88,7 +88,7 @@ const Home = ({ updateCurse, updateLeave }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         form.current.reset();
-        dispatch(newsletterSub(email)).then(() => {
+        dispatch(newsletterSub({email: `${email}`})).then(() => {
             setBtnstate(true);
         })
     }

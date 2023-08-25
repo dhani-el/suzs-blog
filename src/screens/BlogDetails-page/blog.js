@@ -15,13 +15,14 @@ import Like from "../../components/LikeButton/like";
 import { deleteBlog, fetchBlogDetails } from "../../actions/blogActions";
 import "./blog.css";
 import "../Blogs-page/blog.css";
-import Comments from "../../components/Comments/comments";
+// import { Comments } from "../../components/Comments/comments";
+import Comments from "../../components/Comments/CommentBox/comments";
 import { fetchComments } from "../../actions/commentActions";
 import Circle from "../../components/Circle";
 
 // one imports left
 
-const BlogDetails = ({updateCurse, updateLeave}) => {
+const BlogDetails = ({ updateCurse, updateLeave }) => {
     const cBlock = useRef();
     const tl = useRef();
     const { id } = useParams();
@@ -75,11 +76,11 @@ const BlogDetails = ({updateCurse, updateLeave}) => {
     }, [closed]);
     return (
         <div className="blog-details-container">
-            <NavBar 
-            updateCurse={updateCurse}
-            updateLeave={updateLeave}
-             />
-            <Circle/>
+            <NavBar
+                updateCurse={updateCurse}
+                updateLeave={updateLeave}
+            />
+            <Circle />
             <div className="blog-details-container-2">
                 <div className="blog-details">
                     {loading ? (<div className="load-msg">ZEE.</div>) : (
@@ -107,7 +108,7 @@ const BlogDetails = ({updateCurse, updateLeave}) => {
                             <p id="blog-body">{blogDetails[0]?.body}</p>
                             {showDel && <button onClick={handleDelete}>delete blog</button>}
                             <div className="like-comment-hover">
-                                <Like blogTitle={blogDetails[0]?.title} updateCurse={updateCurse} updateLeave={updateLeave}/>
+                                <Like blogTitle={blogDetails[0]?.title} updateCurse={updateCurse} updateLeave={updateLeave} />
                                 <div className="comments-btn-wrapper" onClick={handleOpen} onMouseOver={updateCurse} onMouseLeave={updateLeave}><img src={commentsBtn} alt="message button" /></div>
                             </div>
                             <div ref={cBlock} className={closed ? 'comments-wall played' : 'comments-wall reversed'}>

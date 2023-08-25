@@ -11,6 +11,7 @@ import Genre from "./screens/Genre-page/genre";
 import About from "./screens/About-page/about";
 import Login from "./screens/Login-page/login";
 import Cursor from "./components/Cursor/cursor";
+import Register from "./screens/Register-page/register";
 
 function App() {
   const [curse, setCurse] = useState(false);
@@ -81,6 +82,13 @@ function App() {
             path="/login"
             element={
               <Login />
+            }
+          />
+          <Route
+            exact
+            path="/signup"
+            element={
+              <Register/>
             }
           />
           {/* <Route path="*" element={<NotFound />} /> 404 PAGE */}
