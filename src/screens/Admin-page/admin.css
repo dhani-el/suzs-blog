@@ -1,0 +1,58 @@
+* {
+    cursor: default;
+}
+.admin-container {
+    max-width: 70%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5rem;
+    cursor: default;
+    position: relative;
+    z-index: 5;
+}
+.admin-container .h2 {
+    font-size: 2em;
+    margin-bottom: 4rem;
+    margin-left: -5%;
+    font-weight: 400;
+}
+
+.admin-container form {
+    display: flex;
+    flex-direction: column;
+}
+.admin-container form label {
+    text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-bottom: .1em;
+}
+.admin-container form input {
+    min-height: 3rem;
+    outline: none;
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: .5em;
+    border: .5px solid rgb(17, 17, 17, .2);
+    border-radius: 10px;
+    padding: .5em 1em;
+}
+.admin-container button {
+    margin: auto;
+    margin-top: 2rem;
+    font-size: 1.5em;
+    text-transform: capitalize;
+    background-color: rgb(23, 71, 62, .9);
+    color: white;
+    border: none;
+    padding: .5em 1em;
+    border-radius: 10px;
+    transition: 300ms;
+}
+.admin-container button:hover,
+.admin-container button:focus {
+  border-radius: 30px;
+  transition: 300ms;
+}

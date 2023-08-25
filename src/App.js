@@ -12,6 +12,7 @@ import About from "./screens/About-page/about";
 import Login from "./screens/Login-page/login";
 import Cursor from "./components/Cursor/cursor";
 import Register from "./screens/Register-page/register";
+import Admin from "./screens/Admin-page/admin";
 
 function App() {
   const [curse, setCurse] = useState(false);
@@ -88,7 +89,14 @@ function App() {
             exact
             path="/signup"
             element={
-              <Register/>
+              <Register />
+            }
+          />
+          <Route
+            exact
+            path="/admin"
+            element={
+              <Admin/>
             }
           />
           {/* <Route path="*" element={<NotFound />} /> 404 PAGE */}
