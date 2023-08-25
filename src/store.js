@@ -5,7 +5,7 @@ import {
   combineReducers,
 } from "redux";
 import thunk from "redux-thunk";
-import { loginUserReducer } from "./reducers/authReducers";
+import { checkUsernameReducer, loginUserReducer, registerUserReducer } from "./reducers/authReducers";
 import {
   deleteBlogReducer,
   fetchBlogDetailsReducer,
@@ -36,6 +36,8 @@ const reducer = combineReducers({
   postComment: postCommentsReducer,
   fetchGenre: fetchGenreReducer,
   loginUser: loginUserReducer,
+  checkUsername: checkUsernameReducer,
+  registerUser: registerUserReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

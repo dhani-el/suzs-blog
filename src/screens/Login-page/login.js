@@ -20,7 +20,7 @@ const Login = () => {
         setPassword(e.target.value);
     }
     const { check, loading, error } = useSelector((state) => state?.loginUser);
-    console.log(loading);
+
     // posting the login credentials to the API
     const login = () => {
         setIsPending(true);
