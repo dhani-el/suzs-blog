@@ -5,6 +5,7 @@ import './App.css';
 import { Suspense, lazy, useState } from 'react';
 import ScrollToTop from "./utilities/scrollToTop";
 import Cursor from "./components/Cursor/cursor";
+import Admin from "./screens/Admin-page/admin";
 import ErrorPage from "./screens/404Page/404page";
 
 const Home = lazy(() => import("./screens/Home"));
@@ -14,6 +15,7 @@ const Genre = lazy(() => import("./screens/Genre-page/genre"));
 const About = lazy(() => import("./screens/About-page/about"));
 const Login = lazy(() => import("./screens/Login-page/login"));
 const Register = lazy(() => import("./screens/Register-page/register"));
+
 
 function App() {
   const [curse, setCurse] = useState(false);
@@ -91,6 +93,13 @@ function App() {
             path="/signup"
             element={
               <Register />
+            }
+          />
+          <Route
+            exact
+            path="/admin"
+            element={
+              <Admin/>
             }
           />
           <Route path="" element={<ErrorPage />} />

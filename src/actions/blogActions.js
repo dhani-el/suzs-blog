@@ -98,7 +98,7 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
         type: BLOG_DETAILS_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`${BASE_URL}/blogs/post/${blog_id}`, {});
+        const { data } = await Axios.get(`${BASE_URL}/blogs/post/${blog_id}`, {});
         dispatch({
             type: BLOG_DETAILS_SUCCESS,
             payload: data,
@@ -120,23 +120,23 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
             }
         );
     }
-} 
+}
 
 export const likeBlog = (blog_title) => async (dispatch) => {
     dispatch({
         type: LIKE_BLOG_REQUEST,
     });
     try {
-        const {data} = await Axios.post(`${BASE_URL}/likes/post`, {
+        const { data } = await Axios.post(`${BASE_URL}/likes/post`, {
             // body
             blog_title
         },
-        {
-            credentials:"include",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-        });
+            {
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+            });
         dispatch({
             type: LIKE_BLOG_SUCCESS,
             payload: data,
@@ -165,16 +165,16 @@ export const unLikeBlog = (blog_title) => async (dispatch) => {
         type: UNLIKE_BLOG_REQUEST,
     });
     try {
-        const {data} = await Axios.delete(`${BASE_URL}/likes/delete`, {
+        const { data } = await Axios.delete(`${BASE_URL}/likes/delete`, {
             // body
             blog_title
         },
-        {
-            credentials:"include",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-        });
+            {
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+            });
         dispatch({
             type: UNLIKE_BLOG_SUCCESS,
             payload: data,
@@ -206,7 +206,7 @@ export const fetchBlogLikes = (blog_title) => async (dispatch) => {
         type: LIKES_COUNT_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`${BASE_URL}/likes/${blog_title}`, {
+        const { data } = await Axios.get(`${BASE_URL}/likes/${blog_title}`, {
             credentials: "include",
         });
         dispatch({
@@ -232,13 +232,14 @@ export const fetchBlogLikes = (blog_title) => async (dispatch) => {
     }
 }
 
-export const deleteBlog = ({id}) => async (dispatch) => {
+export const deleteBlog = ({ id }) => async (dispatch) => {
     dispatch({
         type: DELETE_BLOG_REQUEST,
     });
     try {
-        const {data} = await Axios.delete(`${BASE_URL}/admin/delete/${id}`, {
-            credentials:'include',
+        const { data } = await Axios.delete(`${BASE_URL}/admin/delete/${id}`, {
+            withCredentials: true,
+            // credentials: 'include',
         });
         dispatch({
             type: DELETE_BLOG_SUCCESS,
@@ -271,8 +272,8 @@ export const fetchGenre = (name) => async (dispatch) => {
         type: FETCH_GENRE_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`${BASE_URL}/blogs/genres/${name}/0`, {
-            credentials:"include",
+        const { data } = await Axios.get(`${BASE_URL}/blogs/genres/${name}/0`, {
+            credentials: "include",
         });
         dispatch({
             type: FETCH_GENRE_SUCCESS,

@@ -35,7 +35,7 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
     }, [dispatch, id]);
     const { blogDetails, loading, error } = useSelector((state) => state?.blogDetails);
     const handleDelete = () => {
-        dispatch(deleteBlog(id)).then(() => {
+        dispatch(deleteBlog({id: `${id}`})).then(() => {
             navigate('/blogs/0');
         });
     }
@@ -65,7 +65,7 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
             duration: 0.5,
             ease: 'power3.inOut'
         });
-        if (username === 'rashadx' || username === 'daniel') {
+        if (username === 'rashadx' || username === 'omotayo') {
             setShowDel(true)
             // correct this!!!
         }
