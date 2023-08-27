@@ -46,6 +46,7 @@ export const postComment = ({title, comment}) => async (dispatch) => {
             comment: `${comment}`,
         },{
             withCredentials: true,
+            crossDomain: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
