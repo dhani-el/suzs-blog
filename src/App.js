@@ -93,7 +93,7 @@ function App() {
               <Register />
             }
           />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="" element={<ErrorPage />} />
         </Routes>
       </Suspense>
     </ScrollToTop>
