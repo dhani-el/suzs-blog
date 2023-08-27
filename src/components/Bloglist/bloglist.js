@@ -4,7 +4,8 @@ import './BlogList.css';
 import { formatDistanceToNowStrict } from "date-fns";
 
 const Bloglist = ({ blog, updateCurse, updateLeave }) => {
-
+    // console.log(formatDistanceToNowStrict(new Date(blog?.date)));
+    // console.log(blog?.date.toString());
     return (
         <div className="bloglist">
             <div className="blog-preview" key={blog?._id}>

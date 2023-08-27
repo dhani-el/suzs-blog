@@ -44,7 +44,7 @@ const Admin = () => {
     ]
 
     const handleSubmit = (e) => {
-        const date = new Date().toLocaleString();
+        const date = new Date().toLocaleString('en-us');
         e.preventDefault();
         setIsPending(true);
         dispatch(postBlog({
@@ -53,12 +53,13 @@ const Admin = () => {
             genre: `${genre}`,
             readTime: `${readTime}`,
             date: `${date}`,
-            image: `${image}`,
+            image: image,
         })).then(()=> {
             setIsPending(false);
             navigate('/blogs/0');
         })
     }
+
     return (
         <div className="admin-container">
             <div className="h2">Hi Zee, what are we writing?</div>

@@ -10,7 +10,6 @@ import Pagination from "../../components/pagination";
 import NavBar from "../../components/Navbar/Navbar";
 import Circle from "../../components/Circle";
 import "./blog.css";
-import Cursor from "../../components/Cursor/cursor";
 
 const Blog = ({ updateCurse, updateLeave }) => {
     let { id } = useParams();

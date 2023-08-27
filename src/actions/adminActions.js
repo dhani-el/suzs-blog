@@ -13,6 +13,7 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
     dispatch({
         type: POST_BLOG_REQUEST,
     });
+    console.log(image);
     try {
         const { data } = await Axios.post(`${BASE_URL}/admin/post`, {
             title: `${title}`,
@@ -20,12 +21,12 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
             genre: `${genre}`,
             readTime: `${readTime}`,
             date: `${date}`,
-            image: `${image}`,
+            image: image,
         }, {
             // withCredentials: true,
-            // credentials: "include",
+            credentials : "include",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'multipart/form-data'
             },
         });
         dispatch({
