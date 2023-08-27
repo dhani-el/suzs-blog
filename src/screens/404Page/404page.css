@@ -1,0 +1,98 @@
+.parent {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+.error-page-container {
+    display: flex;
+    padding: 0vw 5vw;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.error-texts {
+    line-height: .8rem;
+}
+.error-texts h2{
+    line-height: 5vw;
+}
+.description {
+    margin-bottom: 4rem;
+}
+.error-texts a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: white;
+    background-color: #17473E;
+    font-size: 1.3em;
+    padding: .5em 1.5em;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all ease-in-out 0.4s;
+  }
+  .error-texts a:hover,
+  .error-texts a:focus,
+  .error-texts a:active {
+    border-radius: 30px;
+    transition: 250ms;
+  }
+.m2 {
+    position: absolute;
+    bottom: -5rem;
+    right: -10vw;
+    filter: brightness(0) saturate(100%) invert(18%) sepia(11%) saturate(3794%) hue-rotate(122deg) brightness(91%) contrast(82%);
+}
+@media screen and (max-width: 600px) {
+    .error-page-container {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0vw 5vw;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .m2 {
+        position: absolute;
+        bottom: -5rem;
+        right: -10vw;
+        filter: brightness(0) saturate(100%) invert(18%) sepia(11%) saturate(3794%) hue-rotate(122deg) brightness(91%) contrast(82%);
+    }
+}
+@media screen and (max-width: 435px) {
+    .error-texts {
+        line-height: .8rem;
+    }
+    .error-texts h2{
+        line-height: 35px;
+    }
+    .description {
+        margin-bottom: 2rem;
+        line-height: 15px;
+    }
+    .error-texts a {
+        text-decoration: none;
+        text-transform: capitalize;
+        color: white;
+        background-color: #17473E;
+        font-size: 15px;
+        padding: .5em 1.5em;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all ease-in-out 0.4s;
+      }
+      .error-texts a:hover,
+      .error-texts a:focus,
+      .error-texts a:active {
+        border-radius: 30px;
+        transition: 250ms;
+      }
+      .error-page-container {
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+    }
+}

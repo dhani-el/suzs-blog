@@ -24,11 +24,6 @@ root.render(
 reportWebVitals();
 
 
-// issues
-// search btn axios 
-// reminder css
-// code splitting
-// replace error with image
-// body stuff on axios!
+// issues 
+// body stuff on axios in admin!
 // genre no image, img is returning something weird
-// fix all undefined errors (check especially homepage,GSAP issue)

@@ -9,14 +9,14 @@ const Preloader = () => {
     const headerRef = useRef(null);
 //  preloader animation with GSAP
     useEffect(() => {      
-        gsap.to(el.current, { 
+        gsap?.to(el?.current, { 
             duration: 0.5,
             y: "-10vh",
             ease: 'power2', 
             delay: 6
          });
 
-         gsap.to(headerRef.current, { 
+         gsap?.to(headerRef?.current, { 
             duration: 0.8,
             autoAlpha: 0,
             ease: 'expo', 

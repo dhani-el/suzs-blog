@@ -33,7 +33,7 @@ const About = ({updateCurse, updateLeave}) => {
 
     const tl = new Timeline();
     useEffect(() => {
-        tl.to(container, 1, { css: { visibility: "visible", overflow: "visible" } }).to(
+        tl?.to(container, 1, { css: { visibility: "visible", overflow: "visible" } }).to(
             imageReveal,
             1,
             { height: "0%", ease: Power2.easeInOut }
@@ -46,7 +46,7 @@ const About = ({updateCurse, updateLeave}) => {
             type: "lines",
             linesClass: "lineParent"
         });
-        gsap.to(split.lines, {
+        gsap?.to(split.lines, {
             duration: 1,
             y: 0,
             opacity: 1,

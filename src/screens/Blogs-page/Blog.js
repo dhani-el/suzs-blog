@@ -10,7 +10,7 @@ import Pagination from "../../components/pagination";
 import NavBar from "../../components/Navbar/Navbar";
 import Circle from "../../components/Circle";
 import "./blog.css";
-import Cursor from "../../components/Cursor/cursor";
+import ErrorImage from "../../components/404Image/404Image";
 
 const Blog = ({ updateCurse, updateLeave }) => {
     let { id } = useParams();
@@ -29,36 +29,13 @@ const Blog = ({ updateCurse, updateLeave }) => {
     const searchedData = useSelector((state) => state?.searchBlog?.searched);
     const searchedState = useSelector((state) => state?.searchBlog);
 
-    const [btnState, setBtnstate] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
-    // const handleSubmit = (e) => {
-    //     setBtnstate(true);
-    //     e.preventDefault();
-    // }
-    // const handleSearch = async (e) => {
-    //     setSearchTerm(e.target.value);
-    //      searchQuery(e.target.value)
-    //     .then(function(dat){
-    //         return dat.json()
-    //     }).then(function(result){
-    //         setdata(result)
-    //     }).catch(function(error){
-    //         console.log("error",error.name);
-    //     })
-    // }
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
-        dispatch(searchBlog({ searchTerm }));
+        dispatch(searchBlog({ searchTerm: `${searchTerm}` }));
     }
 
-    // async function searchQuery(searchterm){
-    //    let result = await fetch(`https://zeesblog.onrender.com/blogs/search/${searchterm}`,{
-    //         credentials:"include"
-    //     });
-    //     return result
-    // }
-    let toggleClassCheck = btnState ? 'sub-active' : null;
     function next() {
         const nextId = Number(id) + 1
         navigate(`/blogs/${nextId}`);
@@ -93,7 +70,7 @@ const Blog = ({ updateCurse, updateLeave }) => {
             {loading ? (
                 <Skeleton />
             ) : error ? (
-                <div className="err-msg"></div>
+                <ErrorImage/>
             ) : (
                 <div className="bloglist-wrapper">{blogs?.map((blog) => {
                     return <Bloglist blog={blog} key={blog._id} updateCurse={updateCurse} updateLeave={updateLeave}/>
