@@ -19,6 +19,7 @@ import "../Blogs-page/blog.css";
 import Comments from "../../components/Comments/CommentBox/comments";
 import { fetchComments } from "../../actions/commentActions";
 import Circle from "../../components/Circle";
+import ErrorImage from "../../components/404Image/404Image";
 
 // one imports left
 
@@ -83,7 +84,7 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
             <Circle />
             <div className="blog-details-container-2">
                 <div className="blog-details">
-                    {loading ? (<div className="load-msg">ZEE.</div>) : (
+                    {loading ? (<div className="load-msg">ZEE.</div>) : error ? (<ErrorImage/>) : (
                         <article>
                             <div className="blog-nav">
                                 <div className="blog-stuff">
@@ -117,7 +118,6 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
                             </div>
                         </article>
                     )}
-                    {error && <div className="err-msg">{error}</div>}
                     {copied && <div className="copy-alert">Copied to Clipboard!</div>}
                 </div>
                 <div className="sticky-footer-container">

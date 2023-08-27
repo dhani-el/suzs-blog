@@ -41,7 +41,7 @@ export const postComment = ({title, comment}) => async (dispatch) => {
         type: POST_COMMENT_REQUEST,
     });
     try {
-        const {data} = await Axios.post(`${BASE_URL}/comments/post`, {
+        const {data} = await Axios.post(`${BASE_URL}/comments/post/`, {
             title: `${title}`,
             comment: `${comment}`,
         },{

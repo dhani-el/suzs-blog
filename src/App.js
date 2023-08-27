@@ -4,15 +4,18 @@ import { Route, Routes } from "react-router-dom";
 import './App.css';
 import { Suspense, lazy, useState } from 'react';
 import ScrollToTop from "./utilities/scrollToTop";
-import Home from "./screens/Home";
-import Blog from "./screens/Blogs-page/Blog";
-import BlogDetails from "./screens/BlogDetails-page/blog";
-import Genre from "./screens/Genre-page/genre";
-import About from "./screens/About-page/about";
-import Login from "./screens/Login-page/login";
 import Cursor from "./components/Cursor/cursor";
-import Register from "./screens/Register-page/register";
 import Admin from "./screens/Admin-page/admin";
+import ErrorPage from "./screens/404Page/404page";
+
+const Home = lazy(() => import("./screens/Home"));
+const Blog = lazy(() => import("./screens/Blogs-page/Blog"));
+const BlogDetails = lazy(() => import("./screens/BlogDetails-page/blog"));
+const Genre = lazy(() => import("./screens/Genre-page/genre"));
+const About = lazy(() => import("./screens/About-page/about"));
+const Login = lazy(() => import("./screens/Login-page/login"));
+const Register = lazy(() => import("./screens/Register-page/register"));
+
 
 function App() {
   const [curse, setCurse] = useState(false);
@@ -23,10 +26,10 @@ function App() {
     setCurse(false);
   }
   return (
-    <Suspense fallback={<div> loading</div>} >
-      <ScrollToTop>
-        <ToastContainer />
-        <Cursor curse={curse} />
+    <ScrollToTop>
+      <ToastContainer />
+      <Cursor curse={curse} />
+      <Suspense fallback={<div className="suspense-text">zee</div>} >
         <Routes>
           <Route
             exact
@@ -99,10 +102,10 @@ function App() {
               <Admin/>
             }
           />
-          {/* <Route path="*" element={<NotFound />} /> 404 PAGE */}
+          <Route path="" element={<ErrorPage />} />
         </Routes>
-      </ScrollToTop>
-    </Suspense>
+      </Suspense>
+    </ScrollToTop>
   );
 }
 

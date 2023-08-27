@@ -8,6 +8,27 @@
   position: relative;
 }
 
+.suspense-text {
+  position: absolute;
+  left: 50%;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 4vw;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 900px) {
+  .suspense-text {
+      position: absolute;
+      left: 50%;
+      top: 40vh;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+      font-size: 10vw;
+  }
+}
+
 .main-cursor,
 .secondary-cursor {
   z-index: 10000;
