@@ -1,0 +1,31 @@
+.fun-image-container {
+    width: 60vw;
+}
+.fun-image-container img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .error-page-container {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0vw 5vw;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .fun-image-container {
+        width: 80vw;
+    }
+    .fun-image-container img {
+        max-width: 100%;
+    }
+    .m2 {
+        position: absolute;
+        bottom: -5rem;
+        right: -10vw;
+        filter: brightness(0) saturate(100%) invert(18%) sepia(11%) saturate(3794%) hue-rotate(122deg) brightness(91%) contrast(82%);
+    }
+}

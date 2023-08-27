@@ -10,7 +10,7 @@
   align-items: center;
   position: relative;
   z-index: 10;
-  margin-top: 2%;
+  padding-top: 2%;
   user-select: none;
 }
 

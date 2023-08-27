@@ -1,7 +1,7 @@
 import ReviewSlider from "../Reviews-slider/Reviews";
 import "./Reviews.css";
 
-const Reviews = () => {
+const Reviews = ({updateCurse, updateLeave}) => {
     const reviewsDets = [
         {
             id: 1,
@@ -21,7 +21,7 @@ const Reviews = () => {
     ]
     return ( 
         <div className="reviews-wrapper">
-            <ReviewSlider slides={reviewsDets} parentWidth={"80"}/>
+            <ReviewSlider slides={reviewsDets} parentWidth={"80"} updateCurse={updateCurse} updateLeave={updateLeave}/>
         </div>
      );
 }

@@ -1,17 +1,17 @@
 import insta from "../images/instalogo.png";
 import tweet from "../images/twitterlogo.png";
 
-const Footer = () => {
+const Footer = ({updateCurse, updateLeave}) => {
     return ( 
         <footer className="footer">
             <article>
                 <div className="logo">Susan o.</div>
                 <p>Join many other lifestyle enthusiasts who receive our content in their inbox.</p>
                 <div className="socials-wrapper">
-                    <a href="https://instagram.com/existentialcrisisgirl_?r=nametag" target="_blank" rel="noopener noreferrer" className="socials">
+                    <a href="https://instagram.com/existentialcrisisgirl_?r=nametag" target="_blank" rel="noopener noreferrer" className="socials" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>
                         <img src={insta} alt="" />
                     </a>
-                    <a href="https://mobile.twitter.com/jupiter_knows" target="_blank" rel="noopener noreferrer" className="socials">
+                    <a href="https://mobile.twitter.com/jupiter_knows" target="_blank" rel="noopener noreferrer" className="socials" onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>
                         <img src={tweet} alt="" />
                     </a>
                 </div>
