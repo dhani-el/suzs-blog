@@ -15,12 +15,9 @@ const Like = ({ blogTitle, updateCurse, updateLeave }) => {
     const dispatch = useDispatch();
 
     // like and unlike functions
-    const data = new FormData();
-    data.append("title", blogTitle);
-    const blog_title = new URLSearchParams(data);
     const handleLike = () => {
         if (loginStatus) {
-            dispatch(likeBlog(blog_title)).then(() => {
+            dispatch(likeBlog({blogTitle: `${blogTitle}`})).then(() => {
                 setLike((like) => !like);
             })
         } else {
@@ -29,7 +26,7 @@ const Like = ({ blogTitle, updateCurse, updateLeave }) => {
     }
     const handleUnLike = () => {
         if (loginStatus) {
-            dispatch(unLikeBlog(blog_title)).then(()=> {
+            dispatch(unLikeBlog({blogTitle: `${blogTitle}`})).then(()=> {
                 setLike((like) => !like);
             })
         } else {
@@ -37,7 +34,7 @@ const Like = ({ blogTitle, updateCurse, updateLeave }) => {
         }
     }
     useEffect(() => {
-        dispatch(fetchBlogLikes(blogTitle)).then((value)=> {
+        dispatch(fetchBlogLikes({blogTitle: `${blogTitle}`})).then((value)=> {
             value?.json();
         }).then((data)=> {
             set_no_of_likes(data);
