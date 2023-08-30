@@ -133,15 +133,15 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
     }
 }
 
-export const likeBlog = (blog_title) => async (dispatch) => {
+export const likeBlog = ({blog_title}) => async (dispatch) => {
     dispatch({
         type: LIKE_BLOG_REQUEST,
     });
-    console.log(blog_title);
+    console.log({blog_title});
     try {
         const { data } = await Axios.post(`/likes/api/post`, {
             // body
-            title: `${blog_title}`
+            title: `${blog_title}`,
         },
             {
                 credentials: "include",
@@ -173,14 +173,14 @@ export const likeBlog = (blog_title) => async (dispatch) => {
     }
 }
 
-export const unLikeBlog = (blog_title) => async (dispatch) => {
+export const unLikeBlog = ({blog_title}) => async (dispatch) => {
     dispatch({
         type: UNLIKE_BLOG_REQUEST,
     });
     try {
         const { data } = await Axios.delete(`/likes/api/delete`, {
             // body
-            blog_title
+            title:`${blog_title}`
         },
             {
                 credentials: "include",
