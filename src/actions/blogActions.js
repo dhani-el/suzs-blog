@@ -137,10 +137,11 @@ export const likeBlog = (blog_title) => async (dispatch) => {
     dispatch({
         type: LIKE_BLOG_REQUEST,
     });
+    console.log(blog_title);
     try {
         const { data } = await Axios.post(`/likes/api/post`, {
             // body
-            blog_title
+            title: `${blog_title}`
         },
             {
                 credentials: "include",
