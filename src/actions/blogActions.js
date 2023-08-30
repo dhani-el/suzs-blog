@@ -36,7 +36,11 @@ export const fetchBlog = ({ id }) => async (dispatch) => {
         type: FECTH_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`${BASE_URL}/blogs/${id}`, {});
+        const { data } = await Axios.get(`/blogs/api/${id}`, {
+            headers: {
+                // withCredentials: true,
+            }
+        });
         dispatch({
             type: FECTH_BLOG_SUCCESS,
             payload: data,
@@ -65,8 +69,10 @@ export const searchBlog = ({ searchTerm }) => async (dispatch) => {
         type: SEARCH_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`${BASE_URL}/blogs/search/${searchTerm}`, {
+        const { data } = await Axios.get(`/blogs/api/search/${searchTerm}`, {
+            withCredentials: true,
             headers: {
+          
                 credentials: "include"
             }
         });
@@ -98,7 +104,12 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
         type: BLOG_DETAILS_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`${BASE_URL}/blogs/post/${blog_id}`, {});
+        const { data } = await Axios.get(`/blogs/api/post/${blog_id}`, {
+            withCredentials: true,
+            headers: {
+              
+            }
+        });
         dispatch({
             type: BLOG_DETAILS_SUCCESS,
             payload: data,
@@ -127,14 +138,15 @@ export const likeBlog = (blog_title) => async (dispatch) => {
         type: LIKE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.post(`${BASE_URL}/likes/post`, {
+        const { data } = await Axios.post(`/likes/api/post`, {
             // body
             blog_title
         },
             {
                 credentials: "include",
+                withCredentials: true,
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
             });
         dispatch({
@@ -165,14 +177,16 @@ export const unLikeBlog = (blog_title) => async (dispatch) => {
         type: UNLIKE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.delete(`${BASE_URL}/likes/delete`, {
+        const { data } = await Axios.delete(`/likes/api/delete`, {
             // body
             blog_title
         },
             {
                 credentials: "include",
+                withCredentials: true,
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+            
                 },
             });
         dispatch({
@@ -206,8 +220,8 @@ export const fetchBlogLikes = (blog_title) => async (dispatch) => {
         type: LIKES_COUNT_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`${BASE_URL}/likes/${blog_title}`, {
-            credentials: "include",
+        const { data } = await Axios.get(`/likes/api/${blog_title}`, {
+            withCredentials: true,
         });
         dispatch({
             type: LIKES_COUNT_SUCCESS,
@@ -237,9 +251,8 @@ export const deleteBlog = ({ id }) => async (dispatch) => {
         type: DELETE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.delete(`${BASE_URL}/admin/delete/${id}`, {
+        const { data } = await Axios.delete(`/admin/api/delete/${id}`, {
             withCredentials: true,
-            // credentials: 'include',
         });
         dispatch({
             type: DELETE_BLOG_SUCCESS,
@@ -272,8 +285,8 @@ export const fetchGenre = (name) => async (dispatch) => {
         type: FETCH_GENRE_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`${BASE_URL}/blogs/genres/${name}/0`, {
-            credentials: "include",
+        const { data } = await Axios.get(`/blogs/api/genres/${name}/0`, {
+            withCredentials: true,
         });
         dispatch({
             type: FETCH_GENRE_SUCCESS,
