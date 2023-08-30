@@ -20,7 +20,7 @@ export const loginUser = ({ userName, password }) => async (dispatch) => {
         type: USER_LOGIN_REQUEST,
     });
     try {
-        const { data } = await Axios.post(`/auth/api/login`, {
+        const { data } = await Axios.post(`{BASE_URL}/auth/api/login`, {
             username: `${userName}`,
             password: `${password}`
         }, {

@@ -36,7 +36,7 @@ export const fetchBlog = ({ id }) => async (dispatch) => {
         type: FECTH_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/${id}`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/${id}`, {
             headers: {
                 // withCredentials: true,
             }
@@ -104,7 +104,7 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
         type: BLOG_DETAILS_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/post/${blog_id}`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/post/${blog_id}`, {
             withCredentials: true,
             headers: {
               
@@ -133,15 +133,15 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
     }
 }
 
-export const likeBlog = ({blog_title}) => async (dispatch) => {
+export const likeBlog = ({blogTitle}) => async (dispatch) => {
     dispatch({
         type: LIKE_BLOG_REQUEST,
     });
-    console.log({blog_title});
+    console.log(blogTitle);
     try {
-        const { data } = await Axios.post(`/likes/api/post`, {
+        const { data } = await Axios.post(`${BASE_URL}/likes/api/post`, {
             // body
-            title: `${blog_title}`,
+            title: `${blogTitle}`
         },
             {
                 credentials: "include",
@@ -173,14 +173,14 @@ export const likeBlog = ({blog_title}) => async (dispatch) => {
     }
 }
 
-export const unLikeBlog = ({blog_title}) => async (dispatch) => {
+export const unLikeBlog = ({blogTitle}) => async (dispatch) => {
     dispatch({
         type: UNLIKE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.delete(`/likes/api/delete`, {
+        const { data } = await Axios.delete(`${BASE_URL}/likes/api/delete`, {
             // body
-            title:`${blog_title}`
+            title: `${blogTitle},`
         },
             {
                 credentials: "include",
@@ -216,12 +216,12 @@ export const unLikeBlog = ({blog_title}) => async (dispatch) => {
     }
 }
 
-export const fetchBlogLikes = (blog_title) => async (dispatch) => {
+export const fetchBlogLikes = ({blogTitle}) => async (dispatch) => {
     dispatch({
         type: LIKES_COUNT_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/likes/api/${blog_title}`, {
+        const { data } = await Axios.get(`${BASE_URL}/likes/api/${blogTitle}`, {
             withCredentials: true,
         });
         dispatch({
