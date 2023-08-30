@@ -14,9 +14,10 @@ export const newsletterSub = ({ email }) => async (dispatch) => {
         type: NEWSLETTER_SUBSCRIPTION_REQUEST,
     });
     try {
-        const { data } = await Axios.post(`${BASE_URL}/blogs/newsletter`,
+        const { data } = await Axios.post(`/blogs/api/newsletter`,
             { email },
             {
+                withCredentials:true,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },

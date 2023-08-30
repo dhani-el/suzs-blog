@@ -10,8 +10,8 @@ export const fetchComments = (title, pag) => async (dispatch) => {
         type: FETCH_COMMENTS_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`${BASE_URL}/comments/${title}/${pag}`, {
-            credentials: "include",
+        const {data} = await Axios.get(`/comments/api/${title}/${pag}`, {
+            withCredentials: "include",
         });
         dispatch({
             type: FETCH_COMMENTS_SUCCESS,
@@ -41,12 +41,11 @@ export const postComment = ({title, comment}) => async (dispatch) => {
         type: POST_COMMENT_REQUEST,
     });
     try {
-        const {data} = await Axios.post(`${BASE_URL}/comments/post/`, {
+        const {data} = await Axios.post(`/comments/api/post/`, {
             title: `${title}`,
             comment: `${comment}`,
         },{
             withCredentials: true,
-            crossorigin: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },

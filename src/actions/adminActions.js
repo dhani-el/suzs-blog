@@ -15,7 +15,7 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
     });
     console.log(image);
     try {
-        const { data } = await Axios.post(`${BASE_URL}/admin/post`, {
+        const { data } = await Axios.post(`/admin/api/post`, {
             title: `${title}`,
             body: `${body}`,
             genre: `${genre}`,
@@ -23,7 +23,7 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
             date: `${date}`,
             image: image,
         }, {
-            // withCredentials: true,
+            withCredentials: true,
             credentials : "include",
             headers: {
                 'Content-Type': 'multipart/form-data'
