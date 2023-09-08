@@ -20,6 +20,7 @@ import Comments from "../../components/Comments/CommentBox/comments";
 import { fetchComments } from "../../actions/commentActions";
 import Circle from "../../components/Circle";
 import ErrorImage from "../../components/404Image/404Image";
+import RenderHtml from "../../components/RenderHtml";
 
 // one imports left
 
@@ -39,6 +40,7 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
             navigate('/blogs/0');
         });
     }
+
     const [copied, setCopied] = useState(false);
     const [commentPage, setCommentPage] = useState(0);
     const [showDel, setShowDel] = useState(false);
@@ -106,7 +108,9 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
                             <div className="header-image-wrapper">
                                 <img src={blogDetails[0]?.image} alt="blog" className="header-image" />
                             </div>
-                            <p id="blog-body">{blogDetails[0]?.body}</p>
+                            <div id="blog-body">
+                                <RenderHtml htmlContent={blogDetails[0]?.body}/>
+                            </div>
                             {showDel && <button onClick={handleDelete}>delete blog</button>}
                             <div className="like-comment-hover">
                                 <Like blogTitle={blogDetails[0]?.title} updateCurse={updateCurse} updateLeave={updateLeave} />
