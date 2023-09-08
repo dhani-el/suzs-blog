@@ -207,15 +207,15 @@
     
     .signup-container input,
     .signup-container button {
-        height: 7vh;
-        margin-bottom: 3vh;
+        height: 47px;
+        margin-bottom: 13px;
         border-radius: 5px;
         outline: none;
     }
     
     .signup-container input {
         border: 1px solid #CBCBCB;
-        padding: 1vw;
+        padding: 10px;
         background-color: transparent;
     }
     
@@ -227,8 +227,8 @@
         font-weight: 700;
         font-size: 3.2vw;
         transition: 200ms;
-        margin-top: 5vh;
-        margin-bottom: -10vh;
+        margin-top: 25px;
+        margin-bottom: -35px;
     }
     .signup-container .mark-3 {
         left: 2%;
