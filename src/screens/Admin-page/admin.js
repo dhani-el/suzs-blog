@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./admin.css";
 import { useDispatch } from "react-redux";
 import { postBlog } from "../../actions/adminActions";
+import React from 'react';
+// import {Editor as ClassicEditor} from 'ckeditor5-custom-build/build/ckeditor';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
+import {CKEditor} from '@ckeditor/ckeditor5-react';
 
 const Admin = () => {
     const [title, setTitle] = useState();
@@ -54,7 +58,7 @@ const Admin = () => {
             readTime: `${readTime}`,
             date: `${date}`,
             image: image,
-        })).then(()=> {
+        })).then(() => {
             setIsPending(false);
             navigate('/blogs/0');
         })
@@ -81,34 +85,39 @@ const Admin = () => {
                     required
                     onChange={(e) => setReadtime(e.target.value)}
                 />
-                <label htmlFor="">date</label>
-                <div className="dates">
-                    <select name="" id="" onChange={(e) => setYearfns(e.target.value)}>
-                        {years.map((year, index) => (
-                            <option key={index}>{year}</option>
-                        ))}
-                    </select>
-                    <select name="" id="" onChange={(e) => setMonthfns(e.target.value)}>
-                        {months.map((month, index) => (
-                            <option value={index} key={index}> {month} </option>
-                        ))}
-                    </select>
-                    <select name="" id="" onChange={(e) => setDatenofns(e.target.value)}>
-                        {dateNos.map((dateNo, index) => (
-                            <option key={index}>{dateNo}</option>
-                        ))}
-                    </select>
-                </div>
                 <label htmlFor="">Upload Image</label>
                 <input type="file" name="image" id="image"
                     required
                     onChange={(e) => setImage(e.target.files[0])}
                 />
-                <label htmlFor="">blog body</label>
-                <textarea
+                {/* <textarea
                     required
                     onChange={(e) => setBody(e.target.value)}
-                ></textarea>
+                ></textarea> */}
+                <div>
+                    <div className="App">
+                    <label htmlFor="">blog body</label>
+                        <CKEditor
+                            editor={Editor}
+                            data="<p>Hello! from ck5</p>"
+                            onReady={editor => {
+                                // you can store editor and use it when it is needed
+                                console.log('editor is ready to use!', editor);
+                            }}
+                            onChange={(event, editor) => {
+                                const data = editor.getData();
+                                setBody(data)
+                                console.log( data, typeof data);
+                            }}
+                            onBlur={(event, editor) => {
+                                console.log('Blur', editor);
+                            }}
+                            onFocus={(event, editor) => {
+                                console.log('Focus', editor);
+                            }}
+                        />
+                    </div>
+                </div>
                 {IsPending ? (<button disabled>adding blog</button>) : (<button onClick={handleSubmit}>add blog</button>)}
             </form>
             <p>{title}</p>

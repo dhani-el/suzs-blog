@@ -101,7 +101,7 @@
     cursor: pointer;
 }
 
-.blog-preview p {
+.blog-preview #p {
     text-transform: none;
     font-weight: 350;
     font-size: .7em;
