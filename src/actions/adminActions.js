@@ -6,7 +6,7 @@ import {
     POST_BLOG_SUCCESS
 } from "../constants/adminConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const postBlog = ({ title, body, genre, readTime, date, image }) => async (dispatch) => {

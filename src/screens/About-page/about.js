@@ -109,7 +109,7 @@ const About = ({updateCurse, updateLeave}) => {
             </div>
             <div className="newsletter-stn">
                 <img className="m" src={m} alt="s curve" />
-                <img src={m2} alt="s curve" className="m2" />
+                {/* <img src={m2} alt="s curve" className="m2" /> */}
                 <div className="graphics">
                     <div className="img-tile1">
                         <img className="newsletter-img-wrappers" src={newsletter2} alt="pencils" />

@@ -2,7 +2,7 @@ import Axios from "axios";
 import { toast } from "react-toastify";
 import { FETCH_COMMENTS_FAILED, FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, POST_COMMENT_FAILED, POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS } from "../constants/commentConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const fetchComments = (title, pag) => async (dispatch) => {

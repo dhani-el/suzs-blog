@@ -12,7 +12,7 @@ import {
     REGISTER_USER_FAILED,
 } from "../constants/authConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const loginUser = ({ userName, password }) => async (dispatch) => {

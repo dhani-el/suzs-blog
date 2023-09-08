@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-react": "^6.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "ckeditor5-custom-build": "file:ckeditor5",
     "date-fns": "^2.30.0",
     "dotenv-expand": "^10.0.0",
     "gsap": "^3.12.2",
