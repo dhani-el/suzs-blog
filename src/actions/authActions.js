@@ -12,7 +12,7 @@ import {
     REGISTER_USER_FAILED,
 } from "../constants/authConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const loginUser = ({ userName, password }) => async (dispatch) => {
@@ -20,7 +20,7 @@ export const loginUser = ({ userName, password }) => async (dispatch) => {
         type: USER_LOGIN_REQUEST,
     });
     try {
-        const { data } = await Axios.post(`{BASE_URL}/auth/api/login`, {
+        const { data } = await Axios.post(`/auth/api/login`, {
             username: `${userName}`,
             password: `${password}`
         }, {

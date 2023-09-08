@@ -6,7 +6,7 @@ import {
     NEWSLETTER_SUBSCRIPTION_SUCCESS
 } from "../constants/userConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const newsletterSub = ({ email }) => async (dispatch) => {
