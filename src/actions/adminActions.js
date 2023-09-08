@@ -6,7 +6,7 @@ import {
     POST_BLOG_SUCCESS
 } from "../constants/adminConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const postBlog = ({ title, body, genre, readTime, date, image }) => async (dispatch) => {
@@ -15,7 +15,7 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
     });
     console.log(image);
     try {
-        const { data } = await Axios.post(`${BASE_URL}/admin/post`, {
+        const { data } = await Axios.post(`/admin/api/post`, {
             title: `${title}`,
             body: `${body}`,
             genre: `${genre}`,
@@ -23,7 +23,7 @@ export const postBlog = ({ title, body, genre, readTime, date, image }) => async
             date: `${date}`,
             image: image,
         }, {
-            // withCredentials: true,
+            withCredentials: true,
             credentials : "include",
             headers: {
                 'Content-Type': 'multipart/form-data'

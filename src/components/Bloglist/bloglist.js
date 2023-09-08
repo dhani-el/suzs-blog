@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import '../../screens/Blogs-page/blog.css';
 import './BlogList.css';
 import { formatDistanceToNowStrict } from "date-fns";
+import RenderHtml from "../RenderHtml";
 
 const Bloglist = ({ blog, updateCurse, updateLeave }) => {
     // console.log(formatDistanceToNowStrict(new Date(blog?.date)));
     // console.log(blog?.date.toString());
+    let blogBody = blog?.body.slice(0, 200);
+    const truncate = blogBody += `...`;
     return (
         <div className="bloglist">
             <div className="blog-preview" key={blog?._id}>
@@ -14,7 +17,10 @@ const Bloglist = ({ blog, updateCurse, updateLeave }) => {
                         {new Date(blog?.date).toString() === "Invalid Date" ? blog?.date : formatDistanceToNowStrict(new Date(blog?.date))} ago</div></div>
                     <Link to={`/blog/${blog?.title}`} onMouseOver={updateCurse} onMouseLeave={updateLeave} onClick={updateLeave}>
                         <div className="blog-title">{blog?.title}</div>
-                        <p>{blog?.body.slice(0, 200)}...</p>
+                        <div id="p">
+                        {/* {blog?.body.slice(0, 200)}... */}
+                        <RenderHtml htmlContent={truncate}/>
+                        </div>
                     </Link>
                     <div className="blog-stuff">
                         <div className="blog-stats">

@@ -6,7 +6,7 @@ import {
     NEWSLETTER_SUBSCRIPTION_SUCCESS
 } from "../constants/userConstants";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const newsletterSub = ({ email }) => async (dispatch) => {
@@ -14,9 +14,10 @@ export const newsletterSub = ({ email }) => async (dispatch) => {
         type: NEWSLETTER_SUBSCRIPTION_REQUEST,
     });
     try {
-        const { data } = await Axios.post(`${BASE_URL}/blogs/newsletter`,
+        const { data } = await Axios.post(`/blogs/api/newsletter`,
             { email },
             {
+                withCredentials:true,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
