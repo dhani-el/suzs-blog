@@ -192,12 +192,13 @@
 
 .zee-head-wrapper {
     width: 3.5rem;
+    height: 3.5rem;
     margin-right: 1em;
-}
-
-.zee-head-wrapper img {
     border-radius: 50%;
-    max-width: 100%;
+    background-image: url('../../images/zeehead.png');
+    background-size: cover;
+    background-position: center;
+
 }
 
 .zee-img-wrapper .name {

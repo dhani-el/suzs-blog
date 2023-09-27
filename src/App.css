@@ -776,4 +776,9 @@ footer article:nth-child(2) p {
   footer article:nth-child(1) {
     width: fit-content;
   }
+  .socials-wrapper img {
+    width: 2.7vw;
+    cursor: pointer;
+  }
+  
 }

@@ -7,6 +7,7 @@ import ScrollToTop from "./utilities/scrollToTop";
 import Cursor from "./components/Cursor/cursor";
 import Admin from "./screens/Admin-page/admin";
 import ErrorPage from "./screens/404Page/404page";
+import Loader from "./components/LazyLoader/loader";
 
 const Home = lazy(() => import("./screens/Home"));
 const Blog = lazy(() => import("./screens/Blogs-page/Blog"));
@@ -29,7 +30,7 @@ function App() {
     <ScrollToTop>
       <ToastContainer />
       <Cursor curse={curse} />
-      <Suspense fallback={<div className="suspense-text">zee</div>} >
+      <Suspense fallback={<Loader/>} >
         <Routes>
           <Route
             exact
