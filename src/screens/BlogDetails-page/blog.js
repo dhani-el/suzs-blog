@@ -92,9 +92,9 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
                                 <div className="blog-stuff">
                                     <div className="zee-img-wrapper">
                                         <div className="zee-head-wrapper">
-                                            <img src={zeehead} alt="" />
+                                    
                                         </div>
-                                        <div className="name">susan omono</div>
+                                        <div className="name">ZEE</div>
                                     </div>
                                     <div className="blog-stats">
                                         <div className="date">{new Date(blogDetails[0]?.date).toString() === "Invalid Date" ? blogDetails[0]?.date : formatDistanceToNowStrict(new Date(blogDetails[0]?.date))} ago</div>
@@ -125,7 +125,7 @@ const BlogDetails = ({ updateCurse, updateLeave }) => {
                     {copied && <div className="copy-alert">Copied to Clipboard!</div>}
                 </div>
                 <div className="sticky-footer-container">
-                    <div className="name">Susan O.</div>
+                    <div className="name">ZEE.</div>
                     <p>Join many other lifestyle enthusiasts who receive our content in their inbox.</p>
                     <div className="links-wrapper">
                         <div className="socials-wrapper">
