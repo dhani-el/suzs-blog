@@ -2,7 +2,7 @@ import Axios from "axios";
 import { toast } from "react-toastify";
 import { FETCH_COMMENTS_FAILED, FETCH_COMMENTS_REQUEST, FETCH_COMMENTS_SUCCESS, POST_COMMENT_FAILED, POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS } from "../constants/commentConstants";
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 export const fetchComments = (title, pag) => async (dispatch) => {
@@ -10,7 +10,7 @@ export const fetchComments = (title, pag) => async (dispatch) => {
         type: FETCH_COMMENTS_REQUEST,
     });
     try {
-        const {data} = await Axios.get(`/comments/api/${title}/${pag}`, {
+        const {data} = await Axios.get(`${BASE_URL}/comments/api/${title}/${pag}`, {
             withCredentials: "include",
         });
         dispatch({
@@ -41,7 +41,7 @@ export const postComment = ({title, comment}) => async (dispatch) => {
         type: POST_COMMENT_REQUEST,
     });
     try {
-        const {data} = await Axios.post(`/comments/api/post/`, {
+        const {data} = await Axios.post(`${BASE_URL}/comments/api/post/`, {
             title: `${title}`,
             comment: `${comment}`,
         },{

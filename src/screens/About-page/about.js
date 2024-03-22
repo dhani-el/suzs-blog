@@ -88,10 +88,10 @@ const About = ({updateCurse, updateLeave}) => {
                     </div>
                     <article>
                         <h2 id="split-text">about zee</h2>
-                        <p id="split-text" className="lorem">Hello, my name is Adebayo Susan, I am a multifaceted creative (writer, marketer, designer and so much more)</p>
+                        <p id="split-text" className="lorem">Hello, my name is Susan, I am a multifaceted creative (writer, marketer, designer and so much more)</p>
                         <ul>
                             <li className="aboutZee" id="split-text">I am an aspiring UI/UX writer/researcher.</li>
-                            <li className="aboutZee" id="split-text">I have marketed, managed and helped create content for a company (Waist beads by Nora) that specializes in making luxurious adornment for women.</li>
+                            <li className="aboutZee" id="split-text">I have marketed, managed and helped create content for a company that specializes in making luxurious adornment for women.</li>
                             <li className="aboutZee" id="split-text">Apart from my 9-5 jobs, I have a website where I share resources dedicated to helping young people everywhere become their best selves and to better hold themselves accountable.</li>
                         </ul>
                     </article>

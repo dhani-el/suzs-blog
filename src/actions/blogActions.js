@@ -27,7 +27,7 @@ import {
     FETCH_GENRE_FAILED,
 } from "../constants/blogConstants";
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const customId = "custom-id-yes";
 
 
@@ -36,7 +36,7 @@ export const fetchBlog = ({ id }) => async (dispatch) => {
         type: FECTH_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/${id}`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/${id}`, {
             headers: {
                 // withCredentials: true,
             }
@@ -69,7 +69,7 @@ export const searchBlog = ({ searchTerm }) => async (dispatch) => {
         type: SEARCH_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/search/${searchTerm}`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/search/${searchTerm}`, {
             withCredentials: true,
             headers: {
           
@@ -104,7 +104,7 @@ export const fetchBlogDetails = (blog_id) => async (dispatch) => {
         type: BLOG_DETAILS_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/post/${blog_id}`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/post/${blog_id}`, {
             withCredentials: true,
             headers: {
               
@@ -139,7 +139,7 @@ export const likeBlog = ({blogTitle}) => async (dispatch) => {
     });
     console.log(blogTitle);
     try {
-        const { data } = await Axios.post(`/likes/api/post`, {
+        const { data } = await Axios.post(`${BASE_URL}/likes/api/post`, {
             // body
             title: `${blogTitle}`
         },
@@ -178,7 +178,7 @@ export const unLikeBlog = ({blogTitle}) => async (dispatch) => {
         type: UNLIKE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.delete(`/likes/api/delete`, {
+        const { data } = await Axios.delete(`${BASE_URL}/likes/api/delete`, {
             // body
             title: `${blogTitle},`
         },
@@ -221,7 +221,7 @@ export const fetchBlogLikes = ({blogTitle}) => async (dispatch) => {
         type: LIKES_COUNT_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/likes/api/${blogTitle}`, {
+        const { data } = await Axios.get(`${BASE_URL}/likes/api/${blogTitle}`, {
             withCredentials: true,
         });
         dispatch({
@@ -252,7 +252,7 @@ export const deleteBlog = ({ id }) => async (dispatch) => {
         type: DELETE_BLOG_REQUEST,
     });
     try {
-        const { data } = await Axios.delete(`/admin/api/delete/${id}`, {
+        const { data } = await Axios.delete(`${BASE_URL}/admin/api/delete/${id}`, {
             withCredentials: true,
         });
         dispatch({
@@ -286,7 +286,7 @@ export const fetchGenre = (name) => async (dispatch) => {
         type: FETCH_GENRE_REQUEST,
     });
     try {
-        const { data } = await Axios.get(`/blogs/api/genres/${name}/0`, {
+        const { data } = await Axios.get(`${BASE_URL}/blogs/api/genres/${name}/0`, {
             withCredentials: true,
         });
         dispatch({
